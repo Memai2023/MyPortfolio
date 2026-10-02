@@ -17,10 +17,17 @@ function Header() {
 
     document.addEventListener("keydown", handleKeyDown);
 
+    if (isMenuOpen) {
+      document.documentElement.classList.add("mobile-menu-open");
+    } else {
+      document.documentElement.classList.remove("mobile-menu-open");
+    }
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      document.documentElement.classList.remove("mobile-menu-open");
     };
-  }, []);
+  }, [isMenuOpen]);
 
   const { language } = useLanguage();
   const t = translations[language];

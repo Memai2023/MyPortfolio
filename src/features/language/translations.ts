@@ -35,8 +35,15 @@ export const translations = {
     },
 
     home: {
-      title: "Home",
-      intro: "Welcome to my portfolio.",
+      availability: "Available for LIA / collaboration",
+      rolePrimary: "Experience Designer",
+      roleTag: "UX",
+      roleSecondary: "& Frontend Developer",
+      intro:
+        "I design digital experiences that are clear, engaging and enjoyable to use.",
+      viewWork: "View selected work",
+      aboutMe: "About me",
+      scrollLabel: "Selected work",
     },
 
     work: {
@@ -91,8 +98,15 @@ export const translations = {
     },
 
     home: {
-      title: "Hem",
-      intro: "Välkommen till min portfolio.",
+      availability: "Tillgänglig för LIA / samarbeten",
+      rolePrimary: "Experience Designer",
+      roleTag: "UX",
+      roleSecondary: "& Frontendutvecklare",
+      intro:
+        "Jag designar digitala upplevelser som är tydliga, engagerande och enkla att använda.",
+      viewWork: "Se utvalda projekt",
+      aboutMe: "Om mig",
+      scrollLabel: "Utvalda projekt",
     },
 
     work: {

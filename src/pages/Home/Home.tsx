@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import awakeningCover from "../../assets/images/projects/the-awakening/the-awakening-cover.png";
 import auraBeautyPreview from "../../assets/videos/aura-beauty/aura-beauty-preview.mp4";
+import lostLittleGhostPreview from "../../assets/videos/lost-little-ghost/lost-little-ghost-preview.mp4";
 import VideoPreview from "../../components/ui/VideoPreview";
 
 import { useLanguage } from "../../features/language/LanguageProvider";
@@ -67,6 +68,13 @@ function Home() {
           {featuredProjects.map((project, index) => {
             const isAwakening = project.id === "the-awakening";
             const isAuraBeauty = project.id === "aura-beauty";
+            const isLostLittleGhost = project.id === "lost-little-ghost";
+
+            const videoSrc = isAuraBeauty
+              ? auraBeautyPreview
+              : isLostLittleGhost
+                ? lostLittleGhostPreview
+                : null;
 
             return (
               <article className="project-preview" key={project.id}>
@@ -83,15 +91,15 @@ function Home() {
                   <span aria-hidden="true">↗</span>
                 </Link>
 
-                {isAuraBeauty ? (
+                {videoSrc ? (
                   <div className="project-preview__visual">
                     <VideoPreview
-                      src={auraBeautyPreview}
-                      title="Aura Beauty app preview"
+                      src={videoSrc}
+                      title={`${project.title} preview`}
                     />
 
                     <span className="video-fallback project-preview__video-fallback">
-                      Aura Beauty
+                      {project.title}
                     </span>
                   </div>
                 ) : (

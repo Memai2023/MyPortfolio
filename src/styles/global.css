@@ -300,16 +300,8 @@ p {
   animation-play-state: paused !important;
 }
 
-:root[data-pause-video="true"] video[data-ambient-video] {
-  display: none;
-}
-
 .video-fallback {
   display: none;
-}
-
-:root[data-pause-video="true"] .video-fallback {
-  display: block;
 }
 
 /* =========================================================
@@ -1056,10 +1048,6 @@ html.mobile-menu-open body {
   letter-spacing: var(--letter-spacing-heading);
 }
 
-:root[data-pause-video="true"] .project-preview__video-fallback {
-  display: grid;
-}
-
 .project-preview__placeholder {
   color: var(--color-text-muted);
 
@@ -1211,52 +1199,42 @@ html.mobile-menu-open body {
   object-fit: cover;
 }
 
-.video-preview__sound {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-
-  z-index: 2;
-
-  display: grid;
-  place-items: center;
-
-  width: 2.75rem;
-  height: 2.75rem;
-
-  padding: 0;
-
-  background: rgba(0, 0, 0, 0.62);
-  color: #ffffff;
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-
-  cursor: pointer;
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.video-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-.video-preview__sound {
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.video-preview__controls {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
   z-index: 2;
 
+  display: flex;
+  gap: 0.5rem;
+}
+
+.video-preview__control {
   display: grid;
   place-items: center;
 
   width: 2.5rem;
   height: 2.5rem;
-
   padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
 
   background: rgba(15, 15, 15, 0.72);
   color: #ffffff;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-pill);
 
   cursor: pointer;
 
@@ -1264,11 +1242,22 @@ html.mobile-menu-open body {
   -webkit-backdrop-filter: blur(10px);
 
   transition:
-    transform var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard);
+    transform 160ms ease,
+    background-color 160ms ease,
+    opacity 160ms ease;
 }
 
-.video-preview__sound:hover {
-  background: rgba(15, 15, 15, 0.9);
+.video-preview__control:hover:not(:disabled) {
+  background: rgba(15, 15, 15, 0.92);
   transform: scale(1.05);
+}
+
+.video-preview__control:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.video-preview__control:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }

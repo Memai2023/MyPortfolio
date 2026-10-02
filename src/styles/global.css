@@ -1,0 +1,393 @@
+/* ---------- Design tokens ---------- */
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --color-background: #ffffff;
+  --color-surface: #f6f6f6;
+  --color-text: #171717;
+  --color-text-muted: #5f5f5f;
+  --color-border: #d9d9d9;
+  --color-focus: #005fcc;
+
+  --page-max-width: 1440px;
+  --page-padding: clamp(1rem, 4vw, 4rem);
+}
+
+/* ---------- Dark theme ---------- */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-background: #111216;
+    --color-surface: #191a20;
+    --color-text: #f5f5f5;
+    --color-text-muted: #b7b7bd;
+    --color-border: #34353c;
+    --color-focus: #8ab4ff;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-background: #111216;
+  --color-surface: #191a20;
+  --color-text: #f5f5f5;
+  --color-text-muted: #b7b7bd;
+  --color-border: #34353c;
+  --color-focus: #8ab4ff;
+}
+
+:root[data-high-contrast="true"] {
+  --color-background: #000000;
+  --color-surface: #000000;
+  --color-text: #ffffff;
+  --color-text-muted: #ffffff;
+  --color-border: #ffffff;
+  --color-focus: #ffff00;
+}
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background: var(--color-background);
+  color: var(--color-text);
+
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
+
+/* ---------- Accessibility ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--color-text);
+  color: var(--color-background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root[data-reduced-motion="true"] {
+  scroll-behavior: auto;
+}
+
+:root[data-reduced-motion="true"] *,
+:root[data-reduced-motion="true"] *::before,
+:root[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+:root[data-pause-animations="true"] *,
+:root[data-pause-animations="true"] *::before,
+:root[data-pause-animations="true"] *::after {
+  animation-play-state: paused !important;
+}
+
+:root[data-pause-video="true"] video[data-ambient-video] {
+  display: none;
+}
+
+.video-fallback {
+  display: none;
+}
+
+:root[data-pause-video="true"] .video-fallback {
+  display: block;
+}
+
+/* ---------- Basic page structure ---------- */
+
+main {
+  width: 100%;
+}
+
+section,
+article {
+  width: min(calc(100% - (var(--page-padding) * 2)), var(--page-max-width));
+
+  margin-inline: auto;
+}
+
+/* ---------- Accessibility menu ---------- */
+
+.accessibility-menu {
+  position: relative;
+}
+
+.accessibility-menu > button {
+  cursor: pointer;
+}
+
+#accessibility-panel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 1000;
+
+  display: grid;
+  gap: 0.75rem;
+
+  min-width: 14rem;
+  padding: 1rem;
+
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+#accessibility-panel label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  width: 100%;
+
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  width: min(calc(100% - (var(--page-padding) * 2)), var(--page-max-width));
+
+  min-height: 4.5rem;
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-logo {
+  flex-shrink: 0;
+
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.header-menu {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  text-decoration: none;
+}
+
+.main-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 0.35rem;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-controls fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.header-controls legend {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+/* ---------- Mobile navigation ---------- */
+
+@media (max-width: 700px) {
+  .site-header__inner {
+    min-height: 4rem;
+
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    padding-block: 0.75rem;
+  }
+
+  .site-logo {
+    margin-right: auto;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.75rem;
+    height: 2.75rem;
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+
+    cursor: pointer;
+  }
+
+  .header-menu {
+    display: none;
+
+    width: 100%;
+    margin-left: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+
+    padding-block: 1rem;
+  }
+
+  .header-menu.is-open {
+    display: flex;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .main-nav a {
+    padding-block: 0.9rem;
+
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .header-controls fieldset {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .accessibility-menu {
+    width: 100%;
+  }
+
+  .accessibility-menu > button {
+    width: 100%;
+
+    text-align: left;
+  }
+
+  #accessibility-panel {
+    position: static;
+
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+}

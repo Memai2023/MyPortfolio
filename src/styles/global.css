@@ -1258,7 +1258,8 @@ html.mobile-menu-open body {
    ========================================================= */
 
 .home-page,
-.work-page {
+.work-page,
+.about-page {
   width: min(100%, 1400px);
   margin-inline: auto;
   padding-inline: 2rem;
@@ -1266,7 +1267,8 @@ html.mobile-menu-open body {
 
 @media (max-width: 700px) {
   .home-page,
-  .work-page {
+  .work-page,
+  .about-page {
     padding-inline: 1rem;
   }
 }
@@ -1284,7 +1286,8 @@ html.mobile-menu-open body {
   padding-inline: var(--page-padding);
 }
 
-.work-page__title {
+.work-page__title,
+.about-hero__title {
   margin: 0 0 var(--space-5);
 
   font-size: clamp(3.5rem, 9vw, 8rem);
@@ -1305,8 +1308,184 @@ html.mobile-menu-open body {
 }
 
 @media (max-width: 700px) {
-  .work-page__title {
+  .work-page__title,
+  .about-hero__title {
     font-size: clamp(3rem, 16vw, 5rem);
+  }
+}
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+/* Hero and sections share one grid so the text column lines up down the page */
+
+.about-hero,
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  column-gap: clamp(2rem, 4vw, 4rem);
+}
+
+.about-page {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+/* Hero */
+
+.about-hero {
+  padding-top: clamp(3rem, 7vh, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.about-hero__title,
+.about-hero__statement {
+  grid-column: 1 / -1;
+}
+
+.about-hero__statement {
+  max-width: 56rem;
+  margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+
+  color: var(--color-text);
+
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-heading);
+}
+
+.about-hero__intro {
+  grid-column: 2;
+}
+
+/* Sections */
+
+.about-section {
+  row-gap: var(--space-6);
+
+  padding-block: clamp(3rem, 5vw, 5rem);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.about-section__heading h2 {
+  margin: 0;
+
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.about-section__heading .case-study__label + h2 {
+  margin-top: 0.65rem;
+}
+
+/* Readable text column */
+
+.about-text {
+  max-width: 40rem;
+}
+
+.about-text p {
+  margin: 0;
+
+  line-height: 1.65;
+}
+
+.about-text p + p {
+  margin-top: var(--space-5);
+}
+
+.about-text--lead p:first-child {
+  color: var(--color-text);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+.about-cta {
+  margin-top: var(--space-6);
+}
+
+/* What I work with */
+
+.about-areas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 3vw, 2.75rem) clamp(1.5rem, 3vw, 3rem);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.about-area {
+  padding-top: var(--space-4);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.about-area h3 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+
+  margin: 0 0 var(--space-3);
+
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.about-area h3 span {
+  color: var(--color-text-muted);
+
+  font-size: max(0.875rem, 14px);
+  font-weight: 500;
+}
+
+.about-area p {
+  margin: 0;
+
+  line-height: 1.6;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .about-areas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-hero,
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero__intro {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-areas {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-hero {
+    padding-top: var(--space-6);
+  }
+
+  .about-section {
+    row-gap: var(--space-5);
+
+    padding-block: 2.5rem;
   }
 }
 

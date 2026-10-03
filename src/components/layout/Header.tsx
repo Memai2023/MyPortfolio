@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ThemeSwitcher from "../../features/theme/ThemeSwitcher";
 import LanguageSwitcher from "../../features/language/LanguageSwitcher";
 import AccessibilityMenu from "../accessibility/AccessibilityMenu";
-import { useLanguage } from "../../features/language/LanguageProvider";
+import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
 
 function Header() {

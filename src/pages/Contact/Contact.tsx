@@ -1,4 +1,4 @@
-import { useLanguage } from "../../features/language/LanguageProvider";
+import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
 
 function Contact() {

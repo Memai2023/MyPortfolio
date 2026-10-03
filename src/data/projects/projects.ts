@@ -1,3 +1,5 @@
+import awakeningCover from "../../assets/images/projects/the-awakening/the-awakening-cover.png";
+
 export type Project = {
   id: string;
   title: string;
@@ -11,6 +13,13 @@ export const projects: Project[] = [
     id: "the-awakening",
     title: "The Awakening",
     year: "2026",
+    image: awakeningCover,
+    featured: true,
+  },
+  {
+    id: "sellpy-redesign",
+    title: "Sellpy Redesign",
+    year: "2025",
     image: null,
     featured: true,
   },

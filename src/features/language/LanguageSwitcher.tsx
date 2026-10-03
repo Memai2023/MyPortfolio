@@ -1,4 +1,4 @@
-import { useLanguage } from "./LanguageProvider";
+import { useLanguage } from "./useLanguage";
 import { translations } from "./translations";
 
 function LanguageSwitcher() {

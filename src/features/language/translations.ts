@@ -48,7 +48,8 @@ export const translations = {
 
     work: {
       title: "Work",
-      intro: "My selected projects will appear here.",
+      intro:
+        "Selected projects across UX, experience design and interactive development.",
     },
 
     about: {
@@ -111,7 +112,8 @@ export const translations = {
 
     work: {
       title: "Projekt",
-      intro: "Mina utvalda projekt kommer att visas här.",
+      intro:
+        "Utvalda projekt inom UX, experience design och interaktiv utveckling.",
     },
 
     about: {

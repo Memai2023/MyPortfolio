@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
 
-import awakeningCover from "../../assets/images/projects/the-awakening/the-awakening-cover.png";
-import auraBeautyPreview from "../../assets/videos/aura-beauty/aura-beauty-preview.mp4";
-import lostLittleGhostPreview from "../../assets/videos/lost-little-ghost/lost-little-ghost-preview.mp4";
-import VideoPreview from "../../components/ui/VideoPreview";
+import ProjectList from "../../components/projects/ProjectList";
 
-import { useLanguage } from "../../features/language/LanguageProvider";
-import { translations } from "../../features/language/translations";
 import { projects } from "../../data/projects/projects";
+import { useLanguage } from "../../features/language/useLanguage";
+import { translations } from "../../features/language/translations";
 
 function Home() {
   const { language } = useLanguage();
@@ -51,11 +48,6 @@ function Home() {
             </Link>
           </div>
         </div>
-
-        <div className="hero__footer" aria-hidden="true">
-          <span>{t.home.scrollLabel}</span>
-          <span>↓</span>
-        </div>
       </section>
 
       {/* Featured projects */}
@@ -64,65 +56,7 @@ function Home() {
           <p>{t.home.scrollLabel}</p>
         </div>
 
-        <div className="featured-work__list">
-          {featuredProjects.map((project, index) => {
-            const isAwakening = project.id === "the-awakening";
-            const isAuraBeauty = project.id === "aura-beauty";
-            const isLostLittleGhost = project.id === "lost-little-ghost";
-
-            const videoSrc = isAuraBeauty
-              ? auraBeautyPreview
-              : isLostLittleGhost
-                ? lostLittleGhostPreview
-                : null;
-
-            return (
-              <article className="project-preview" key={project.id}>
-                <div className="project-preview__meta">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{project.year}</span>
-                </div>
-
-                <Link
-                  className="project-preview__title-row"
-                  to={`/work/${project.id}`}
-                >
-                  <h2>{project.title}</h2>
-                  <span aria-hidden="true">↗</span>
-                </Link>
-
-                {videoSrc ? (
-                  <div className="project-preview__visual">
-                    <VideoPreview
-                      src={videoSrc}
-                      title={`${project.title} preview`}
-                    />
-
-                    <span className="video-fallback project-preview__video-fallback">
-                      {project.title}
-                    </span>
-                  </div>
-                ) : (
-                  <Link
-                    className="project-preview__visual"
-                    to={`/work/${project.id}`}
-                    aria-label={`View ${project.title}`}
-                  >
-                    {isAwakening ? (
-                      <img src={awakeningCover} alt="" />
-                    ) : project.image ? (
-                      <img src={project.image} alt="" />
-                    ) : (
-                      <span className="project-preview__placeholder">
-                        {project.title}
-                      </span>
-                    )}
-                  </Link>
-                )}
-              </article>
-            );
-          })}
-        </div>
+        <ProjectList projects={featuredProjects} />
       </section>
     </div>
   );

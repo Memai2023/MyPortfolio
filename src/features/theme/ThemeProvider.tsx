@@ -1,20 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-
-type ThemePreference = "system" | "light" | "dark";
-
-type ThemeContextValue = {
-  theme: ThemePreference;
-  setTheme: (theme: ThemePreference) => void;
-};
-
-const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { ThemeContext, type ThemePreference } from "./useTheme";
 
 const STORAGE_KEY = "portfolio-theme";
 
@@ -60,14 +45,4 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used within ThemeProvider");
-  }
-
-  return context;
 }

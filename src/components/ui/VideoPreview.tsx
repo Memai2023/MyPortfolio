@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { useAccessibility } from "../../features/accessibility/AccessibilityProvider";
+import { useAccessibility } from "../../features/accessibility/useAccessibility";
 
 type VideoPreviewProps = {
   src: string;
   title: string;
+  allowZoom?: boolean;
 };
 
-function VideoPreview({ src, title }: VideoPreviewProps) {
+function VideoPreview({ src, title, allowZoom = false }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const { pauseVideo } = useAccessibility();
 
   const [isMuted, setIsMuted] = useState(true);
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const isPaused = pauseVideo || isManuallyPaused;
 
@@ -32,6 +34,29 @@ function VideoPreview({ src, title }: VideoPreviewProps) {
       // Autoplay can occasionally be blocked by the browser.
     });
   }, [isPaused]);
+
+  useEffect(() => {
+    if (!isExpanded) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isExpanded]);
 
   const togglePlayback = () => {
     if (pauseVideo) {
@@ -54,8 +79,14 @@ function VideoPreview({ src, title }: VideoPreviewProps) {
     setIsMuted(nextMutedState);
   };
 
+  const toggleExpanded = () => {
+    setIsExpanded((current) => !current);
+  };
+
   return (
-    <div className="video-preview">
+    <div
+      className={`video-preview ${isExpanded ? "video-preview--expanded" : ""}`}
+    >
       <video
         ref={videoRef}
         data-ambient-video
@@ -125,6 +156,51 @@ function VideoPreview({ src, title }: VideoPreviewProps) {
             </svg>
           )}
         </button>
+
+        {allowZoom && (
+          <button
+            className="video-preview__control"
+            type="button"
+            onClick={toggleExpanded}
+            aria-label={isExpanded ? "Close expanded video" : "Expand video"}
+            title={isExpanded ? "Close expanded video" : "Expand video"}
+            aria-pressed={isExpanded}
+          >
+            {isExpanded ? (
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 4v5H4m11-5v5h5M9 20v-5H4m11 5v-5h5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 9V4h5m11 5V4h-5M4 15v5h5m11-5v5h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
+          </button>
+        )}
       </div>
     </div>
   );

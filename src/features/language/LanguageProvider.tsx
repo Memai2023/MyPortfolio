@@ -1,21 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-
-type Language = "sv" | "en";
-
-type LanguageContextValue = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-};
-
-const LanguageContext = createContext<LanguageContextValue | undefined>(
-  undefined,
-);
+import { useMemo, useState, type ReactNode } from "react";
+import { LanguageContext, type Language } from "./useLanguage";
 
 const STORAGE_KEY = "portfolio-language";
 
@@ -53,14 +37,4 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
       {children}
     </LanguageContext.Provider>
   );
-}
-
-export function useLanguage() {
-  const context = useContext(LanguageContext);
-
-  if (!context) {
-    throw new Error("useLanguage must be used within LanguageProvider");
-  }
-
-  return context;
 }

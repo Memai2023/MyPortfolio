@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAccessibility } from "../../features/accessibility/AccessibilityProvider";
-import { useLanguage } from "../../features/language/LanguageProvider";
+import { useAccessibility } from "../../features/accessibility/useAccessibility";
+import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
 
 function AccessibilityMenu() {

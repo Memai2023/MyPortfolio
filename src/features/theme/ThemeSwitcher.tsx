@@ -1,6 +1,6 @@
-import { useLanguage } from "../language/LanguageProvider";
+import { useLanguage } from "../language/useLanguage";
 import { translations } from "../language/translations";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "./useTheme";
 
 function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();

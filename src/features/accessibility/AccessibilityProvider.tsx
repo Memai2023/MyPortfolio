@@ -1,29 +1,9 @@
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-
-type AccessibilitySettings = {
-  reducedMotion: boolean;
-  pauseAnimations: boolean;
-  pauseVideo: boolean;
-  highContrast: boolean;
-};
-
-type AccessibilityContextValue = AccessibilitySettings & {
-  setReducedMotion: (value: boolean) => void;
-  setPauseAnimations: (value: boolean) => void;
-  setPauseVideo: (value: boolean) => void;
-  setHighContrast: (value: boolean) => void;
-};
-
-const AccessibilityContext = createContext<
-  AccessibilityContextValue | undefined
->(undefined);
+  AccessibilityContext,
+  type AccessibilityContextValue,
+  type AccessibilitySettings,
+} from "./useAccessibility";
 
 const STORAGE_KEY = "portfolio-accessibility";
 
@@ -105,16 +85,4 @@ export function AccessibilityProvider({
       {children}
     </AccessibilityContext.Provider>
   );
-}
-
-export function useAccessibility() {
-  const context = useContext(AccessibilityContext);
-
-  if (!context) {
-    throw new Error(
-      "useAccessibility must be used within AccessibilityProvider",
-    );
-  }
-
-  return context;
 }

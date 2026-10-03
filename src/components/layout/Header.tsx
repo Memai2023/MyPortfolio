@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ThemeSwitcher from "../../features/theme/ThemeSwitcher";
 import LanguageSwitcher from "../../features/language/LanguageSwitcher";
 import AccessibilityMenu from "../accessibility/AccessibilityMenu";
+import StableLabel from "../ui/StableLabel";
 import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
 
@@ -32,6 +33,13 @@ function Header() {
   const { language } = useLanguage();
   const t = translations[language];
 
+  const navLabel = (key: keyof typeof t.nav) => (
+    <StableLabel
+      text={t.nav[key]}
+      variants={Object.values(translations).map((tr) => tr.nav[key])}
+    />
+  );
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -60,16 +68,16 @@ function Header() {
         >
           <nav className="main-nav" aria-label="Main navigation">
             <NavLink to="/" onClick={closeMenu}>
-              {t.nav.home}
+              {navLabel("home")}
             </NavLink>
             <NavLink to="/work" onClick={closeMenu}>
-              {t.nav.work}
+              {navLabel("work")}
             </NavLink>
             <NavLink to="/about" onClick={closeMenu}>
-              {t.nav.about}
+              {navLabel("about")}
             </NavLink>
             <NavLink to="/contact" onClick={closeMenu}>
-              {t.nav.contact}
+              {navLabel("contact")}
             </NavLink>
           </nav>
 

@@ -22,16 +22,12 @@ function Home() {
         </div>
 
         <div className="hero__content">
-          <p className="hero__name">Maria Hendricks</p>
-
           <h1 className="hero__title">
-            <span className="hero__title-primary">
-              <span>{t.home.rolePrimary}</span>
-              <span className="hero__role-tag">/UX</span>
-            </span>
+            <span className="hero__title-primary">{t.home.rolePrimary}</span>
 
             <span className="hero__title-secondary">
-              {t.home.roleSecondary}
+              <span className="hero__title-ux">{t.home.roleTag}</span>{" "}
+              <span aria-hidden="true">·</span> {t.home.roleSecondary}
             </span>
           </h1>
 

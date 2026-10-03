@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAccessibility } from "../../features/accessibility/useAccessibility";
 import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
+import StableLabel from "../ui/StableLabel";
 
 function AccessibilityMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,12 @@ function AccessibilityMenu() {
         aria-controls="accessibility-panel"
         onClick={() => setIsOpen((current) => !current)}
       >
-        {t.accessibility.label}
+        <StableLabel
+          text={t.accessibility.label}
+          variants={Object.values(translations).map(
+            (tr) => tr.accessibility.label,
+          )}
+        />
       </button>
 
       {isOpen && (

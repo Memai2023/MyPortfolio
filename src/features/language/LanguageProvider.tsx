@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { LanguageContext, type Language } from "./useLanguage";
 
 const STORAGE_KEY = "portfolio-language";
@@ -21,8 +21,12 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   function setLanguage(language: Language) {
     setLanguageState(language);
     localStorage.setItem(STORAGE_KEY, language);
-    document.documentElement.lang = language;
   }
+
+  // Keeps <html lang> in sync on first load as well as after switching
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const value = useMemo(
     () => ({

@@ -364,8 +364,10 @@ article {
   display: grid;
   gap: var(--space-3);
 
-  min-width: 15rem;
-  padding: var(--space-4);
+  /* Fits the longest label in the current language, with equal padding
+     on both sides instead of a fixed minimum width */
+  width: max-content;
+  padding: var(--space-5);
 
   background: var(--color-surface);
   color: var(--color-text);
@@ -379,9 +381,16 @@ article {
 #accessibility-panel label {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
+
+  white-space: nowrap;
 
   cursor: pointer;
+}
+
+/* No default UA margin, so the panel padding is the real edge spacing */
+#accessibility-panel input {
+  margin: 0;
 }
 
 /* =========================================================
@@ -395,12 +404,26 @@ article {
 
   width: 100%;
 
-  background: color-mix(in srgb, var(--color-background) 92%, transparent);
-
   border-bottom: 1px solid var(--color-border);
+}
+
+/* The blurred background lives on its own layer: a backdrop-filter on
+   .site-header itself would make it the containing block for the fixed
+   mobile menu, collapsing the menu to the header's height. */
+
+.site-header::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: color-mix(in srgb, var(--color-background) 92%, transparent);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+
+  pointer-events: none;
 }
 
 .site-header__inner {
@@ -417,7 +440,7 @@ article {
 .site-logo {
   flex-shrink: 0;
 
-  font-size: var(--font-size-sm);
+  font-size: clamp(1.125rem, 0.8rem + 1.15vw, 1.5625rem);
   font-weight: 700;
 
   letter-spacing: -0.02em;
@@ -437,10 +460,16 @@ article {
   gap: var(--space-6);
 }
 
+/* Four equal slots, each as wide as the widest label in any language,
+   so the nav keeps one footprint and an even rhythm when switching */
+
 .main-nav {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   align-items: center;
-  gap: var(--space-5);
+  justify-items: center;
+  gap: var(--space-4);
 }
 
 .main-nav a {
@@ -464,7 +493,13 @@ article {
   color: var(--color-text);
 }
 
-.main-nav a.active::after {
+/* Underline sits under the visible word, not the (wider) stable slot */
+
+.main-nav .stable-label__text {
+  position: relative;
+}
+
+.main-nav a.active .stable-label__text::after {
   content: "";
 
   position: absolute;
@@ -479,6 +514,25 @@ article {
   border-radius: var(--radius-pill);
 }
 
+/* ---------- Stable labels ----------
+   Every language variant shares one grid cell; only the current one is
+   visible, so the label is always as wide as its widest translation. */
+
+.stable-label {
+  display: inline-grid;
+  justify-items: center;
+
+  white-space: nowrap;
+}
+
+.stable-label > * {
+  grid-area: 1 / 1;
+}
+
+.stable-label__sizer {
+  visibility: hidden;
+}
+
 /* =========================================================
    HEADER CONTROLS
    ========================================================= */
@@ -489,51 +543,122 @@ article {
   gap: var(--space-3);
 }
 
-.header-controls fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
+/* Round language/theme toggles — same border and hover as the Accessibility button */
 
-  display: flex;
+.header-icon-button {
+  position: relative;
+
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-}
+  justify-content: center;
+  flex-shrink: 0;
 
-.header-controls legend {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0;
-  margin: -1px;
 
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  background: transparent;
+  color: var(--color-text);
 
-  border: 0;
-}
-
-.header-controls label {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-
-  color: var(--color-text-muted);
-
-  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
 
   cursor: pointer;
+
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
 }
 
-.header-controls input {
-  accent-color: var(--color-accent);
+.header-icon-button:hover {
+  background: var(--color-surface-soft);
+  border-color: var(--color-border-strong);
+}
+
+/* Tooltip: same text as the aria-label, shown after a short delay on
+   hover (real pointers only) and keyboard focus, hidden instantly */
+
+.header-tooltip {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 1;
+
+  padding: 0.3rem 0.6rem;
+
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  font-size: max(var(--font-size-sm), 14px);
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateX(-50%);
+
+  transition:
+    opacity var(--duration-fast) var(--ease-standard),
+    visibility 0s linear var(--duration-fast);
+}
+
+@media (hover: hover) {
+  .header-icon-button:hover .header-tooltip {
+    opacity: 1;
+    visibility: visible;
+
+    transition-delay: 400ms;
+  }
+}
+
+.header-icon-button:focus-visible .header-tooltip {
+  opacity: 1;
+  visibility: visible;
+
+  transition-delay: 400ms;
+}
+
+.header-icon-button[data-tooltip-dismissed] .header-tooltip {
+  opacity: 0;
+  visibility: hidden;
+
+  transition: none;
+}
+
+.header-icon-button__flag {
+  display: block;
+  overflow: hidden;
+
+  width: 1.375rem;
+  height: 1.375rem;
+
+  border-radius: 50%;
+
+  /* Keeps the flag edge visible against both backgrounds */
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.header-icon-button__flag svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
 }
 
 /* ---------- Mobile menu scroll lock ---------- */
 
-html.mobile-menu-open,
-html.mobile-menu-open body {
+/* Root only: overflow on <html> locks the viewport, while overflow on <body>
+   would turn body into a scroll container and detach the sticky header. */
+
+html.mobile-menu-open {
   overflow: hidden;
 }
 
@@ -623,6 +748,7 @@ html.mobile-menu-open body {
   }
 
   .main-nav {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -637,21 +763,37 @@ html.mobile-menu-open body {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .main-nav a.active::after {
+  .main-nav a.active .stable-label__text::after {
     display: none;
   }
 
-  .header-controls {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-4);
+  /* Menu rows and the full-width Accessibility button are left-aligned */
+  .main-nav .stable-label,
+  .accessibility-menu > button .stable-label {
+    justify-items: start;
   }
 
-  .header-controls fieldset {
-    justify-content: flex-start;
+  /* Toggles sit side by side; the full-width Accessibility button wraps below */
+  .header-controls {
     flex-wrap: wrap;
+    gap: var(--space-4) var(--space-3);
+  }
 
-    gap: var(--space-3);
+  /* In the menu, tooltips appear in the free space right of both circles,
+     so they never cover the Accessibility button below */
+  .header-controls {
+    position: relative;
+  }
+
+  .header-icon-button {
+    position: static;
+  }
+
+  .header-tooltip {
+    top: 1.375rem;
+    left: calc(5.5rem + (var(--space-3) * 2));
+
+    transform: translateY(-50%);
   }
 
   .accessibility-menu {
@@ -755,22 +897,18 @@ html.mobile-menu-open body {
   box-shadow: 0 0 0 0.3rem var(--color-accent-soft);
 }
 
+/* Anchored from the top with a viewport-based offset (not centred), so the
+   heading's position never depends on the language-dependent text below it.
+   Spare space collects under the actions instead. */
+
 .hero__content {
   width: 100%;
   max-width: 1250px;
 
-  margin-block: auto;
+  margin-top: clamp(0rem, 24svh - 6rem, 12rem);
+  margin-bottom: auto;
 
   padding-block: var(--space-7);
-}
-
-.hero__name {
-  margin-bottom: var(--space-4);
-
-  color: var(--color-text-muted);
-
-  font-size: var(--font-size-sm);
-  font-weight: 600;
 }
 
 .hero__title {
@@ -791,24 +929,23 @@ html.mobile-menu-open body {
   display: block;
 }
 
-.hero__title-primary {
-  display: flex !important;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.12em;
-}
-
-.hero__role-tag {
-  color: var(--color-accent);
-
-  font-size: 0.42em;
-  font-weight: 700;
-
-  letter-spacing: -0.02em;
-}
+/* Supporting line: 45% of the heading, so the role reads as secondary */
 
 .hero__title-secondary {
+  margin-top: 0.3em;
+
   color: var(--color-text-muted);
+
+  font-size: 0.45em;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.hero__title-ux {
+  color: var(--color-accent);
+
+  font-weight: 600;
 }
 
 .hero__intro {
@@ -893,10 +1030,6 @@ html.mobile-menu-open body {
     padding-block: var(--space-7);
   }
 
-  .hero__name {
-    margin-bottom: var(--space-3);
-  }
-
   .hero__title {
     margin-bottom: var(--space-5);
 
@@ -920,21 +1053,6 @@ html.mobile-menu-open body {
     min-height: 3.25rem;
   }
 }
-@media (max-width: 900px) {
-  .hero__title-primary {
-    display: block !important;
-  }
-
-  .hero__role-tag {
-    display: block;
-
-    margin-top: 0.05em;
-
-    font-size: 0.34em;
-    line-height: 1;
-  }
-}
-
 /* =========================================================
    FEATURED WORK
    ========================================================= */

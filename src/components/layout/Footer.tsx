@@ -1,7 +1,9 @@
 function Footer() {
   return (
-    <footer>
-      <p>© Maria Hendricks</p>
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <p>© 2026 Maria Hendricks</p>
+      </div>
     </footer>
   );
 }

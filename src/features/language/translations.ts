@@ -105,8 +105,16 @@ export const translations = {
     },
 
     contact: {
-      title: "Contact",
-      intro: "Contact information will appear here.",
+      title: "Let's talk.",
+      intro:
+        "I'm currently looking for a LIA internship in Experience Design from 4 January to 21 May 2027. If you'd like to talk about an internship, collaboration or a project, feel free to get in touch.",
+      linksLabel: "Contact details",
+      emailLabel: "Email",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      newTab: "(opens in a new tab)",
+      ctaTitle: "Prefer email?",
+      ctaLink: "Send me an email",
     },
   },
 
@@ -216,8 +224,16 @@ export const translations = {
     },
 
     contact: {
-      title: "Kontakt",
-      intro: "Mina kontaktuppgifter kommer att visas här.",
+      title: "Hör gärna av dig.",
+      intro:
+        "Jag söker just nu LIA inom Experience Design under perioden 4 januari–21 maj 2027. Om du vill prata om praktik, samarbete eller ett projekt är du varmt välkommen att höra av dig.",
+      linksLabel: "Kontaktuppgifter",
+      emailLabel: "E-post",
+      linkedinLabel: "LinkedIn",
+      githubLabel: "GitHub",
+      newTab: "(öppnas i en ny flik)",
+      ctaTitle: "Föredrar du mejl?",
+      ctaLink: "Skicka mejl",
     },
   },
 } as const;

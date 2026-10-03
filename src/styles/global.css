@@ -304,7 +304,18 @@ p {
    PAGE STRUCTURE
    ========================================================= */
 
+/* Header, main and footer stack so the footer sits at the bottom of short pages */
+
+#root {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
 main {
+  flex: 1 0 auto;
+
   width: 100%;
 }
 
@@ -673,6 +684,29 @@ html.mobile-menu-open body {
   :root {
     --page-max-width: 1520px;
   }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Same container as .site-header__inner, so footer and header share one edge */
+
+.site-footer__inner {
+  width: min(calc(100% - (var(--page-padding) * 2)), var(--page-max-width));
+
+  margin-inline: auto;
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.site-footer p {
+  margin: 0;
+
+  font-size: var(--font-size-sm);
 }
 
 /* =========================================================
@@ -1259,7 +1293,8 @@ html.mobile-menu-open body {
 
 .home-page,
 .work-page,
-.about-page {
+.about-page,
+.contact-page {
   width: min(100%, 1400px);
   margin-inline: auto;
   padding-inline: 2rem;
@@ -1268,7 +1303,8 @@ html.mobile-menu-open body {
 @media (max-width: 700px) {
   .home-page,
   .work-page,
-  .about-page {
+  .about-page,
+  .contact-page {
     padding-inline: 1rem;
   }
 }
@@ -1287,7 +1323,8 @@ html.mobile-menu-open body {
 }
 
 .work-page__title,
-.about-hero__title {
+.about-hero__title,
+.contact-hero__title {
   margin: 0 0 var(--space-5);
 
   font-size: clamp(3.5rem, 9vw, 8rem);
@@ -1309,7 +1346,8 @@ html.mobile-menu-open body {
 
 @media (max-width: 700px) {
   .work-page__title,
-  .about-hero__title {
+  .about-hero__title,
+  .contact-hero__title {
     font-size: clamp(3rem, 16vw, 5rem);
   }
 }
@@ -1486,6 +1524,183 @@ html.mobile-menu-open body {
     row-gap: var(--space-5);
 
     padding-block: 2.5rem;
+  }
+}
+
+/* =========================================================
+   CONTACT PAGE
+   ========================================================= */
+
+/* Same two-column grid as the About page, so text columns line up */
+
+.contact-hero,
+.contact-link,
+.contact-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(2rem, 4vw, 4rem);
+}
+
+.contact-page {
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+/* Hero */
+
+.contact-hero {
+  align-items: start;
+
+  padding-top: clamp(3rem, 7vh, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.contact-hero__title {
+  grid-column: 1 / -1;
+}
+
+.contact-hero__intro {
+  grid-column: 2;
+
+  max-width: 40rem;
+  margin: 0;
+
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+/* Contact links */
+
+.contact-links ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.contact-links li {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-links li:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-link {
+  align-items: baseline;
+
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.contact-link__label {
+  color: var(--color-text-muted);
+
+  font-size: max(0.875rem, 14px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-link__value {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  min-width: 0;
+}
+
+.contact-link__text {
+  min-width: 0;
+
+  font-size: clamp(1.25rem, 0.9rem + 2vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-heading);
+  overflow-wrap: anywhere;
+}
+
+.contact-link__arrow {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.contact-link:hover .contact-link__text {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.contact-link:hover .contact-link__arrow {
+  color: var(--color-text);
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.contact-visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Email CTA */
+
+.contact-cta {
+  align-items: center;
+  row-gap: var(--space-5);
+
+  padding-top: clamp(3rem, 5vw, 5rem);
+}
+
+.contact-cta h2 {
+  margin: 0;
+
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .contact-hero,
+  .contact-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-hero__intro {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-hero {
+    padding-top: var(--space-6);
+  }
+
+  .contact-link {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-2);
+  }
+
+  .contact-cta {
+    padding-top: 2.5rem;
   }
 }
 

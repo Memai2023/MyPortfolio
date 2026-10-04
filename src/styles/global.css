@@ -26,7 +26,7 @@
   --font-size-xl: clamp(1.4rem, 1.25rem + 0.75vw, 1.9rem);
   --font-size-2xl: clamp(2rem, 1.7rem + 1.5vw, 3rem);
   --font-size-3xl: clamp(2.75rem, 2rem + 3.5vw, 5.5rem);
-  --font-size-display: clamp(3.25rem, 2rem + 6vw, 8rem);
+  --font-size-display: clamp(3rem, 1.6rem + 4vw, 5.5rem);
 
   --line-height-tight: 0.95;
   --line-height-heading: 1.05;
@@ -79,15 +79,15 @@
 
   /* ---------- Light theme ---------- */
 
-  --color-background: #f4f1ea;
+  --color-background: #fff7fa; /* pale blush */
   --color-surface: #ffffff;
-  --color-surface-soft: #ebe7de;
+  --color-surface-soft: #f6ecef;
 
   --color-text: #171717;
   --color-text-muted: #66635e;
 
-  --color-border: #d8d4cb;
-  --color-border-strong: #bcb7ad;
+  --color-border: #ead9df;
+  --color-border-strong: #cdbcc3;
 
   --color-accent: #6c5ce7;
   --color-accent-hover: #5a4bd4;
@@ -98,6 +98,111 @@
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.05);
 
   --shadow-floating: 0 20px 50px rgba(0, 0, 0, 0.12);
+
+  /* Background grain, barely visible */
+  --texture-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.05;
+
+  /* Home Selected Work backdrop: barely-there blush / purple light */
+  --hw-glow-a: rgba(108, 92, 231, 0.1);
+  --hw-glow-b: rgba(232, 160, 190, 0.2);
+  /* Home line waves: muted lavender, dusty pink, soft mauve, warm grey */
+  --wave-1: rgba(124, 98, 190, 0.52);
+  --wave-2: rgba(184, 108, 144, 0.48);
+  --wave-3: rgba(146, 92, 138, 0.46);
+  --wave-4: rgba(118, 100, 108, 0.4);
+  --wave-halo: rgba(196, 150, 206, 0.05);
+  --wave-accent: rgba(140, 96, 170, 0.62);
+
+  /* Home background tints, crossfaded over the base (#fff7fa) on scroll */
+  --home-bg-hero: #f5edf8; /* faint lavender blush */
+  --home-bg-work: #f9f4f3; /* soft ivory */
+  --home-bg-about: #fbf6f1; /* warm ivory */
+
+  /* Aura Beauty media: a pale blush wash (14%) and a pale cool lavender
+     (8%) that pull the creamy shots toward the rosy page without darkening
+     them or turning them pink */
+  --aura-tint:
+    linear-gradient(rgba(244, 220, 244, 0.14), rgba(244, 220, 244, 0.14)),
+    linear-gradient(rgba(232, 226, 255, 0.08), rgba(232, 226, 255, 0.08));
+  --aura-filter: saturate(0.93) hue-rotate(-8deg);
+
+  /* Header glass */
+  --header-glass: linear-gradient(
+    180deg,
+    rgba(255, 250, 252, 0.62) 0%,
+    rgba(255, 244, 249, 0.5) 100%
+  );
+  --header-glass-scrolled: linear-gradient(
+    180deg,
+    rgba(255, 250, 252, 0.56) 0%,
+    rgba(255, 243, 249, 0.44) 100%
+  );
+  --header-edge: rgba(122, 98, 150, 0.16);
+  --header-highlight: rgba(255, 255, 255, 0.75);
+  --header-shadow: 0 10px 28px -14px rgba(70, 50, 90, 0.22);
+
+  /* Media frames: thin glass rim, top highlight, faint frosted mat */
+  --media-rim: rgba(122, 98, 150, 0.2);
+  --media-highlight: rgba(255, 255, 255, 0.6);
+  --media-surround: rgba(255, 255, 255, 0.42);
+  --media-shadow:
+    0 1px 2px rgba(70, 50, 90, 0.06), 0 18px 40px -20px rgba(70, 50, 90, 0.28);
+
+  /* Small uppercase labels: a step stronger than muted text */
+  --color-label: color-mix(
+    in srgb,
+    var(--color-text) 70%,
+    var(--color-text-muted)
+  );
+
+  /* Glass buttons: frosted fill, bright top edge, darker lower edge,
+     soft drop shadow. -drop-hover lifts, -drop-press settles. */
+  --btn-glass-fill: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.66) 0%,
+    rgba(255, 236, 245, 0.36) 100%
+  );
+  --btn-glass-fill-hover: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 238, 247, 0.5) 100%
+  );
+  --btn-glass-text: #171717;
+  --btn-glass-edge: rgba(122, 98, 150, 0.3);
+  --btn-glass-edge-hover: rgba(122, 98, 150, 0.5);
+  --btn-glass-top: rgba(255, 255, 255, 0.95);
+  --btn-glass-bottom: rgba(92, 70, 120, 0.16);
+  --btn-glass-press: rgba(70, 50, 90, 0.26);
+  --btn-glass-drop:
+    0 1px 2px rgba(70, 50, 90, 0.1), 0 4px 12px rgba(70, 50, 90, 0.1);
+  --btn-glass-drop-hover:
+    0 2px 4px rgba(70, 50, 90, 0.12), 0 10px 22px rgba(70, 50, 90, 0.16);
+  --btn-glass-drop-press:
+    0 1px 1px rgba(70, 50, 90, 0.12), 0 1px 3px rgba(70, 50, 90, 0.06);
+
+  --btn-primary-fill: linear-gradient(
+    180deg,
+    rgba(76, 66, 96, 0.8) 0%,
+    rgba(36, 31, 46, 0.84) 100%
+  );
+  --btn-primary-fill-hover: linear-gradient(
+    180deg,
+    rgba(90, 78, 112, 0.82) 0%,
+    rgba(42, 36, 54, 0.86) 100%
+  );
+  --btn-primary-text: #ffffff;
+  --btn-primary-edge: rgba(58, 44, 80, 0.5);
+  --btn-primary-edge-hover: rgba(58, 44, 80, 0.72);
+  --btn-primary-top: rgba(255, 255, 255, 0.34);
+  --btn-primary-bottom: rgba(12, 8, 20, 0.42);
+  --btn-primary-press: rgba(12, 8, 20, 0.6);
+  --btn-primary-drop:
+    0 1px 2px rgba(30, 20, 40, 0.28), 0 6px 16px rgba(30, 20, 40, 0.24);
+  --btn-primary-drop-hover:
+    0 3px 6px rgba(30, 20, 40, 0.28), 0 14px 28px rgba(30, 20, 40, 0.3);
+  --btn-primary-drop-press:
+    0 1px 1px rgba(30, 20, 40, 0.32), 0 2px 4px rgba(30, 20, 40, 0.12);
 }
 
 /* =========================================================
@@ -106,21 +211,118 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-background: #0d0d0f;
-    --color-surface: #161619;
-    --color-surface-soft: #1d1d21;
+    --color-background: #161514; /* warm charcoal */
+    --color-surface: #1d1c1a;
+    --color-surface-soft: #242320;
 
     --color-text: #f5f3ee;
     --color-text-muted: #aaa7a1;
 
-    --color-border: #303034;
-    --color-border-strong: #4a4a50;
+    --color-border: #353331;
+    --color-border-strong: #4e4b48;
 
     --color-accent: #8b7cf6;
     --color-accent-hover: #9c8ff8;
     --color-accent-soft: rgba(139, 124, 246, 0.14);
 
     --color-focus: #b0a5ff;
+
+    --texture-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --texture-opacity: 0.035;
+
+    --hw-glow-a: rgba(139, 124, 246, 0.12);
+    --hw-glow-b: rgba(190, 185, 178, 0.06);
+    /* Home line waves: muted violet, lavender grey, mauve, off-white */
+    --wave-1: rgba(172, 154, 236, 0.34);
+    --wave-2: rgba(176, 168, 194, 0.3);
+    --wave-3: rgba(204, 160, 198, 0.28);
+    --wave-4: rgba(240, 236, 230, 0.22);
+    --wave-halo: rgba(140, 120, 220, 0.035);
+    --wave-accent: rgba(214, 200, 255, 0.55);
+
+    /* Home background tints over the base charcoal (#161514) */
+    --home-bg-hero: #1d1828; /* plum / deep indigo */
+    --home-bg-work: #18171a; /* near-neutral */
+    --home-bg-about: #1b1815; /* warmer charcoal */
+
+    /* no blush wash on a dark page */
+    --aura-tint: none;
+    --aura-filter: none;
+
+    /* Header glass */
+    --header-glass: linear-gradient(
+      180deg,
+      rgba(34, 32, 38, 0.6) 0%,
+      rgba(24, 23, 26, 0.5) 100%
+    );
+    --header-glass-scrolled: linear-gradient(
+      180deg,
+      rgba(34, 32, 38, 0.54) 0%,
+      rgba(24, 23, 26, 0.44) 100%
+    );
+    --header-edge: rgba(255, 255, 255, 0.08);
+    --header-highlight: rgba(255, 255, 255, 0.07);
+    --header-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.65);
+
+    /* Media frames */
+    --media-rim: rgba(255, 255, 255, 0.1);
+    --media-highlight: rgba(232, 226, 255, 0.16);
+    --media-surround: rgba(255, 255, 255, 0.035);
+    --media-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 44px -20px rgba(0, 0, 0, 0.7);
+
+    --color-label: color-mix(
+      in srgb,
+      var(--color-text) 72%,
+      var(--color-text-muted)
+    );
+
+    /* Glass buttons: smoked glass with a lit top edge */
+    --btn-glass-fill: linear-gradient(
+      180deg,
+      rgba(62, 59, 69, 0.52) 0%,
+      rgba(32, 31, 36, 0.44) 100%
+    );
+    --btn-glass-fill-hover: linear-gradient(
+      180deg,
+      rgba(76, 72, 86, 0.6) 0%,
+      rgba(40, 38, 46, 0.5) 100%
+    );
+    --btn-glass-text: #f5f3ee;
+    --btn-glass-edge: rgba(255, 255, 255, 0.14);
+    --btn-glass-edge-hover: rgba(232, 226, 255, 0.3);
+    --btn-glass-top: rgba(255, 255, 255, 0.16);
+    --btn-glass-bottom: rgba(0, 0, 0, 0.45);
+    --btn-glass-press: rgba(0, 0, 0, 0.62);
+    --btn-glass-drop:
+      0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.4);
+    --btn-glass-drop-hover:
+      0 2px 4px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.5);
+    --btn-glass-drop-press:
+      0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.2);
+
+    --btn-primary-fill: linear-gradient(
+      180deg,
+      rgba(204, 196, 236, 0.34) 0%,
+      rgba(142, 134, 176, 0.22) 100%
+    );
+    --btn-primary-fill-hover: linear-gradient(
+      180deg,
+      rgba(214, 206, 246, 0.42) 0%,
+      rgba(152, 144, 188, 0.28) 100%
+    );
+    --btn-primary-text: #fbfaff;
+    --btn-primary-edge: rgba(214, 206, 255, 0.36);
+    --btn-primary-edge-hover: rgba(226, 220, 255, 0.58);
+    --btn-primary-top: rgba(255, 255, 255, 0.38);
+    --btn-primary-bottom: rgba(0, 0, 0, 0.36);
+    --btn-primary-press: rgba(0, 0, 0, 0.52);
+    --btn-primary-drop:
+      0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(0, 0, 0, 0.45);
+    --btn-primary-drop-hover:
+      0 3px 6px rgba(0, 0, 0, 0.5), 0 14px 30px rgba(0, 0, 0, 0.55);
+    --btn-primary-drop-press:
+      0 1px 1px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.25);
 
     --shadow-soft:
       0 1px 2px rgba(0, 0, 0, 0.25), 0 12px 36px rgba(0, 0, 0, 0.25);
@@ -130,21 +332,117 @@
 }
 
 :root[data-theme="dark"] {
-  --color-background: #0d0d0f;
-  --color-surface: #161619;
-  --color-surface-soft: #1d1d21;
+  --color-background: #161514; /* warm charcoal */
+  --color-surface: #1d1c1a;
+  --color-surface-soft: #242320;
 
   --color-text: #f5f3ee;
   --color-text-muted: #aaa7a1;
 
-  --color-border: #303034;
-  --color-border-strong: #4a4a50;
+  --color-border: #353331;
+  --color-border-strong: #4e4b48;
 
   --color-accent: #8b7cf6;
   --color-accent-hover: #9c8ff8;
   --color-accent-soft: rgba(139, 124, 246, 0.14);
 
   --color-focus: #b0a5ff;
+
+  --texture-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --texture-opacity: 0.035;
+
+  --hw-glow-a: rgba(139, 124, 246, 0.12);
+  --hw-glow-b: rgba(190, 185, 178, 0.06);
+  /* Home line waves: muted violet, lavender grey, mauve, off-white */
+  --wave-1: rgba(172, 154, 236, 0.34);
+  --wave-2: rgba(176, 168, 194, 0.3);
+  --wave-3: rgba(204, 160, 198, 0.28);
+  --wave-4: rgba(240, 236, 230, 0.22);
+  --wave-halo: rgba(140, 120, 220, 0.035);
+  --wave-accent: rgba(214, 200, 255, 0.55);
+
+  /* Home background tints over the base charcoal (#161514) */
+  --home-bg-hero: #1d1828; /* plum / deep indigo */
+  --home-bg-work: #18171a; /* near-neutral */
+  --home-bg-about: #1b1815; /* warmer charcoal */
+
+  /* no blush wash on a dark page */
+  --aura-tint: none;
+  --aura-filter: none;
+
+  /* Header glass */
+  --header-glass: linear-gradient(
+    180deg,
+    rgba(34, 32, 38, 0.6) 0%,
+    rgba(24, 23, 26, 0.5) 100%
+  );
+  --header-glass-scrolled: linear-gradient(
+    180deg,
+    rgba(34, 32, 38, 0.54) 0%,
+    rgba(24, 23, 26, 0.44) 100%
+  );
+  --header-edge: rgba(255, 255, 255, 0.08);
+  --header-highlight: rgba(255, 255, 255, 0.07);
+  --header-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.65);
+
+  /* Media frames */
+  --media-rim: rgba(255, 255, 255, 0.1);
+  --media-highlight: rgba(232, 226, 255, 0.16);
+  --media-surround: rgba(255, 255, 255, 0.035);
+  --media-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4), 0 22px 44px -20px rgba(0, 0, 0, 0.7);
+
+  --color-label: color-mix(
+    in srgb,
+    var(--color-text) 72%,
+    var(--color-text-muted)
+  );
+
+  /* Glass buttons: smoked glass with a lit top edge */
+  --btn-glass-fill: linear-gradient(
+    180deg,
+    rgba(62, 59, 69, 0.52) 0%,
+    rgba(32, 31, 36, 0.44) 100%
+  );
+  --btn-glass-fill-hover: linear-gradient(
+    180deg,
+    rgba(76, 72, 86, 0.6) 0%,
+    rgba(40, 38, 46, 0.5) 100%
+  );
+  --btn-glass-text: #f5f3ee;
+  --btn-glass-edge: rgba(255, 255, 255, 0.14);
+  --btn-glass-edge-hover: rgba(232, 226, 255, 0.3);
+  --btn-glass-top: rgba(255, 255, 255, 0.16);
+  --btn-glass-bottom: rgba(0, 0, 0, 0.45);
+  --btn-glass-press: rgba(0, 0, 0, 0.62);
+  --btn-glass-drop: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.4);
+  --btn-glass-drop-hover:
+    0 2px 4px rgba(0, 0, 0, 0.45), 0 10px 24px rgba(0, 0, 0, 0.5);
+  --btn-glass-drop-press:
+    0 1px 1px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  --btn-primary-fill: linear-gradient(
+    180deg,
+    rgba(204, 196, 236, 0.34) 0%,
+    rgba(142, 134, 176, 0.22) 100%
+  );
+  --btn-primary-fill-hover: linear-gradient(
+    180deg,
+    rgba(214, 206, 246, 0.42) 0%,
+    rgba(152, 144, 188, 0.28) 100%
+  );
+  --btn-primary-text: #fbfaff;
+  --btn-primary-edge: rgba(214, 206, 255, 0.36);
+  --btn-primary-edge-hover: rgba(226, 220, 255, 0.58);
+  --btn-primary-top: rgba(255, 255, 255, 0.38);
+  --btn-primary-bottom: rgba(0, 0, 0, 0.36);
+  --btn-primary-press: rgba(0, 0, 0, 0.52);
+  --btn-primary-drop:
+    0 1px 2px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(0, 0, 0, 0.45);
+  --btn-primary-drop-hover:
+    0 3px 6px rgba(0, 0, 0, 0.5), 0 14px 30px rgba(0, 0, 0, 0.55);
+  --btn-primary-drop-press:
+    0 1px 1px rgba(0, 0, 0, 0.55), 0 2px 4px rgba(0, 0, 0, 0.25);
 
   --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.25), 0 12px 36px rgba(0, 0, 0, 0.25);
 
@@ -174,6 +472,44 @@
 
   --shadow-soft: none;
   --shadow-floating: none;
+
+  --aura-tint: none;
+  --aura-filter: none;
+
+  --header-glass: #000000;
+  --header-glass-scrolled: #000000;
+  --header-edge: #ffffff;
+  --header-highlight: transparent;
+  --header-shadow: 0 0 transparent;
+  --media-rim: #ffffff;
+  --media-highlight: transparent;
+  --media-surround: transparent;
+  --media-shadow: 0 0 transparent;
+  --color-label: #ffffff;
+
+  /* buttons: flat black and white, solid edges, no glass */
+  --btn-glass-fill: #000000;
+  --btn-glass-fill-hover: #000000;
+  --btn-glass-text: #ffffff;
+  --btn-glass-edge: #ffffff;
+  --btn-glass-edge-hover: #ffff00;
+  --btn-glass-top: transparent;
+  --btn-glass-bottom: transparent;
+  --btn-glass-press: transparent;
+  --btn-glass-drop: 0 0 transparent;
+  --btn-glass-drop-hover: 0 0 transparent;
+  --btn-glass-drop-press: 0 0 transparent;
+  --btn-primary-fill: #ffffff;
+  --btn-primary-fill-hover: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-primary-edge: #ffffff;
+  --btn-primary-edge-hover: #ffff00;
+  --btn-primary-top: transparent;
+  --btn-primary-bottom: transparent;
+  --btn-primary-press: transparent;
+  --btn-primary-drop: 0 0 transparent;
+  --btn-primary-drop-hover: 0 0 transparent;
+  --btn-primary-drop-press: 0 0 transparent;
 }
 
 /* =========================================================
@@ -205,6 +541,29 @@ body {
   transition:
     background-color var(--duration-medium) var(--ease-standard),
     color var(--duration-medium) var(--ease-standard);
+}
+
+/* Background grain: a fixed layer between the page background and all
+   content, so it only shows on bare background — never over images, the
+   lightbox or the expanded video — and never catches clicks */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: var(--texture-image);
+  background-size: 180px 180px;
+
+  opacity: var(--texture-opacity);
+
+  pointer-events: none;
+}
+
+:root[data-high-contrast="true"] body::before {
+  display: none;
 }
 
 img,
@@ -404,7 +763,7 @@ article {
 
   width: 100%;
 
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--header-edge);
 }
 
 /* The blurred background lives on its own layer: a backdrop-filter on
@@ -418,12 +777,47 @@ article {
   inset: 0;
   z-index: -1;
 
-  background: color-mix(in srgb, var(--color-background) 92%, transparent);
+  /* floating glass: translucent tint, strong frost, a lit top edge and a
+     faint shadow below; the page shows through softly while scrolling */
+  background: var(--header-glass);
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 1px 0 var(--header-highlight),
+    var(--header-shadow);
+
+  backdrop-filter: blur(22px) saturate(1.35);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35);
 
   pointer-events: none;
+
+  transition:
+    background-color var(--duration-medium) var(--ease-standard),
+    backdrop-filter var(--duration-medium) var(--ease-standard),
+    box-shadow var(--duration-medium) var(--ease-standard);
+}
+
+/* After scrolling: a touch more translucent with a stronger blur and a soft
+   shadow. Height and layout stay the same, so nothing below moves. */
+
+.site-header.is-scrolled::before {
+  background: var(--header-glass-scrolled);
+
+  backdrop-filter: blur(26px) saturate(1.4);
+  -webkit-backdrop-filter: blur(26px) saturate(1.4);
+}
+
+/* Top-of-page marker the header observes to know when it has scrolled */
+
+.header-scroll-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 1px;
+  height: 24px;
+
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .site-header__inner {
@@ -499,7 +893,7 @@ article {
   position: relative;
 }
 
-.main-nav a.active .stable-label__text::after {
+.main-nav .stable-label__text::after {
   content: "";
 
   position: absolute;
@@ -512,6 +906,17 @@ article {
   background: var(--color-accent);
 
   border-radius: var(--radius-pill);
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  transition: transform 300ms var(--ease-emphasized);
+}
+
+/* Draws in from the left on hover or keyboard focus, retracts on leave;
+   the active route keeps it */
+.main-nav a:is(:hover, :focus-visible, .active) .stable-label__text::after {
+  transform: scaleX(1);
 }
 
 /* ---------- Stable labels ----------
@@ -713,10 +1118,6 @@ html.mobile-menu-open {
     border-color: var(--color-border-strong);
   }
 
-  .menu-toggle:active {
-    transform: scale(0.96);
-  }
-
   .header-menu {
     position: fixed;
 
@@ -763,7 +1164,7 @@ html.mobile-menu-open {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .main-nav a.active .stable-label__text::after {
+  .main-nav .stable-label__text::after {
     display: none;
   }
 
@@ -885,8 +1286,10 @@ html.mobile-menu-open {
 }
 
 .hero__status-dot {
-  width: 0.55rem;
-  height: 0.55rem;
+  position: relative;
+
+  width: 0.7rem;
+  height: 0.7rem;
 
   flex-shrink: 0;
 
@@ -999,10 +1402,6 @@ html.mobile-menu-open {
   border: 1px solid var(--color-text);
 }
 
-.hero__primary-link:hover {
-  transform: translateY(-2px);
-}
-
 .hero__secondary-link {
   color: var(--color-text);
 
@@ -1033,7 +1432,7 @@ html.mobile-menu-open {
   .hero__title {
     margin-bottom: var(--space-5);
 
-    font-size: clamp(3rem, 14vw, 5rem);
+    font-size: clamp(2.75rem, 12vw, 4rem);
   }
 
   .hero__intro {
@@ -1053,117 +1452,7 @@ html.mobile-menu-open {
     min-height: 3.25rem;
   }
 }
-/* =========================================================
-   FEATURED WORK
-   ========================================================= */
-
-.featured-work {
-  padding-top: var(--space-9);
-  padding-bottom: var(--space-10);
-}
-
-.featured-work__heading {
-  margin-bottom: var(--space-7);
-  padding-bottom: var(--space-4);
-
-  border-bottom: 1px solid var(--color-border);
-}
-
-.featured-work__heading p {
-  margin: 0;
-
-  color: var(--color-text-muted);
-
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-
-  letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
-}
-
-.featured-work__list {
-  display: grid;
-  gap: var(--space-10);
-}
-
-.project-preview {
-  display: block;
-
-  color: var(--color-text);
-
-  text-decoration: none;
-}
-
-.project-preview__meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: var(--space-4);
-
-  color: var(--color-text-muted);
-
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-
-  letter-spacing: var(--letter-spacing-wide);
-}
-
-.project-preview__title-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-4);
-
-  margin-bottom: var(--space-5);
-}
-
-.project-preview__title-row h2 {
-  margin: 0;
-
-  font-size: clamp(2.25rem, 5vw, 5rem);
-  font-weight: 600;
-
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.project-preview__title-row > span {
-  padding-bottom: 0.15em;
-
-  color: var(--color-text-muted);
-
-  font-size: var(--font-size-xl);
-
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
-
-.project-preview__visual {
-  position: relative;
-
-  width: 100%;
-  aspect-ratio: 16 / 9;
-
-  display: grid;
-  place-items: center;
-
-  overflow: hidden;
-
-  background: var(--color-surface-soft);
-
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-}
-
-.project-preview__visual img,
-.project-preview__visual video {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
+/* Title shown in place of media for a project without an image */
 .project-preview__placeholder {
   color: var(--color-text-muted);
 
@@ -1171,45 +1460,6 @@ html.mobile-menu-open {
   font-weight: 600;
 
   letter-spacing: var(--letter-spacing-heading);
-}
-
-.project-preview:hover .project-preview__title-row > span {
-  color: var(--color-accent);
-
-  transform: translate(0.2rem, -0.2rem);
-}
-
-/* =========================================================
-   FEATURED WORK — MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-  .featured-work {
-    padding-top: var(--space-8);
-    padding-bottom: var(--space-9);
-  }
-
-  .featured-work__heading {
-    margin-bottom: var(--space-6);
-  }
-
-  .featured-work__list {
-    gap: var(--space-8);
-  }
-
-  .project-preview__title-row {
-    margin-bottom: var(--space-4);
-  }
-
-  .project-preview__title-row h2 {
-    font-size: clamp(2rem, 10vw, 3.25rem);
-  }
-
-  .project-preview__visual {
-    aspect-ratio: 4 / 3;
-
-    border-radius: var(--radius-lg);
-  }
 }
 
 /* =========================================================
@@ -1279,6 +1529,37 @@ html.mobile-menu-open {
   transition:
     transform var(--duration-fast) var(--ease-standard),
     background-color var(--duration-fast) var(--ease-standard);
+}
+
+/* the player sits over the poster, which stays as the loading state and
+   the fallback if YouTube shows nothing */
+.youtube-preview iframe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.youtube-preview--poster[aria-busy="true"] {
+  cursor: progress;
+}
+
+.youtube-preview__notice {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 2;
+
+  margin: 0;
+  padding: 0.35rem 0.85rem;
+
+  background: rgba(15, 15, 15, 0.72);
+  color: #ffffff;
+
+  border-radius: var(--radius-pill);
+
+  font-size: max(0.8125rem, 13px);
+
+  translate: -50% 0;
 }
 
 .youtube-preview:hover .youtube-preview__overlay {
@@ -1352,11 +1633,6 @@ html.mobile-menu-open {
     transform 160ms ease,
     background-color 160ms ease,
     opacity 160ms ease;
-}
-
-.video-preview__control:hover:not(:disabled) {
-  background: rgba(15, 15, 15, 0.92);
-  transform: scale(1.05);
 }
 
 .video-preview__control:disabled {
@@ -1445,7 +1721,7 @@ html.mobile-menu-open {
 .contact-hero__title {
   margin: 0 0 var(--space-5);
 
-  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-size: clamp(2.75rem, 1.5rem + 3.5vw, 4.5rem);
   line-height: 0.92;
   letter-spacing: -0.055em;
 }
@@ -1458,15 +1734,11 @@ html.mobile-menu-open {
   line-height: 1.5;
 }
 
-.work-page .featured-work {
-  padding-top: clamp(3rem, 6vw, 5rem);
-}
-
 @media (max-width: 700px) {
   .work-page__title,
   .about-hero__title,
   .contact-hero__title {
-    font-size: clamp(3rem, 16vw, 5rem);
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
   }
 }
 
@@ -1879,7 +2151,7 @@ html.mobile-menu-open {
 .case-study__title {
   margin: 1rem 0 1.5rem;
 
-  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-size: clamp(2.75rem, 1.5rem + 3.5vw, 4.5rem);
   line-height: 0.92;
   letter-spacing: -0.055em;
 }
@@ -1940,7 +2212,7 @@ html.mobile-menu-open {
 .case-study__section-heading h2 {
   margin: 0.8rem 0 1rem;
 
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 1rem + 2.8vw, 3.5rem);
   line-height: 1;
   letter-spacing: -0.04em;
 }
@@ -2085,7 +2357,7 @@ html.mobile-menu-open {
   }
 
   .case-study__title {
-    font-size: clamp(3rem, 16vw, 5rem);
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
   }
 
   .case-study__video {
@@ -2689,4 +2961,2667 @@ html.mobile-menu-open {
   .ghost-hero__actions a {
     flex: 1 1 12rem;
   }
+}
+
+/* =========================================================
+   MOTION
+   All movement lives behind one gate: it only applies when neither the OS
+   nor the site's "Reduce motion" setting asks for less. With either on,
+   nothing below matches, so all content is simply visible and still.
+   ========================================================= */
+
+:root {
+  --motion-ease: var(--ease-emphasized); /* hover / header / buttons */
+
+  /* Reveals: slow, soft ease-out with no overshoot */
+  --reveal-ease: cubic-bezier(0.33, 1, 0.68, 1);
+  --reveal-stagger: 100ms;
+  --reveal-label-duration: 700ms;
+  --reveal-text-duration: 800ms;
+  --reveal-media-duration: 900ms;
+  --reveal-heading-duration: 950ms;
+  --page-enter-duration: 220ms;
+}
+
+/* Eyebrows and labels: barely rise */
+@keyframes motion-rise-label {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Body text: mostly a fade */
+@keyframes motion-rise-text {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Media and calls to action */
+@keyframes motion-rise-media {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Headings: a small rise while a soft mask uncovers them from below */
+@keyframes motion-rise-heading {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    clip-path: inset(100% -0.5em -0.5em -0.5em);
+  }
+
+  to {
+    clip-path: inset(-0.5em);
+  }
+}
+
+@keyframes motion-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes motion-dot-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(3.4);
+  }
+}
+
+@keyframes motion-dot-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  20% {
+    transform: scale(1.18);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+}
+
+/* Transforms, translate, scale or opacity on an ancestor would trap or dim
+   a fixed overlay (expanded video, image lightbox). While one is open, its
+   ancestors drop all motion. */
+:is(
+  .work-carousel__media,
+  .hero__content,
+  .about-section,
+  .case-study__overview,
+  .case-study__media-section,
+  .case-study__section,
+  .case-study__design-showcase,
+  .case-study__reflection,
+  .case-study__section-heading,
+  .case-study__design-figure,
+  .case-study__design-image,
+  .case-study__video,
+  .ghost-direction,
+  .ghost-workflow,
+  .ghost-frame,
+  .ghost-frame__media,
+  .home-work__track,
+  .home-work__card,
+  .home-work__media,
+  [data-reveal],
+  [data-reveal-item]
+):has(.video-preview--expanded, .image-lightbox) {
+  transform: none !important;
+  translate: none !important;
+  scale: none !important;
+  clip-path: none !important;
+  opacity: 1 !important;
+  animation: none !important;
+  /* drop instantly: a transform easing back (e.g. tilt) would trap the
+     overlay inside its frame until the transition ends */
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---------- Page transition (enter only, never delays navigation) ---------- */
+
+  :root:not([data-reduced-motion="true"]) .page-transition {
+    animation: motion-page-enter var(--page-enter-duration) var(--ease-standard)
+      backwards;
+  }
+
+  /* ---------- Home hero entrance: label, heading, role, intro, actions ---------- */
+
+  :root:not([data-reduced-motion="true"]) .hero__eyebrow {
+    animation: motion-rise-label var(--reveal-label-duration) var(--reveal-ease)
+      80ms backwards;
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__title-primary {
+    animation: motion-rise-heading var(--reveal-heading-duration)
+      var(--reveal-ease) 200ms backwards;
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__title-secondary,
+  :root:not([data-reduced-motion="true"]) .hero__intro,
+  :root:not([data-reduced-motion="true"]) .hero__actions {
+    animation: motion-rise-text var(--reveal-text-duration) var(--reveal-ease)
+      backwards;
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__title-secondary {
+    animation-delay: calc(200ms + var(--reveal-stagger) * 1.5);
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__intro {
+    animation-delay: calc(200ms + var(--reveal-stagger) * 2.5);
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__actions {
+    animation-delay: calc(200ms + var(--reveal-stagger) * 3.5);
+  }
+
+  /* Availability dot: a soft ring expands well beyond the dot and fades,
+     while the dot itself swells slightly — every 3 seconds */
+  :root:not([data-reduced-motion="true"]) .hero__status-dot {
+    animation: motion-dot-breathe 3s ease-in-out 1.4s infinite;
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__status-dot::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+
+    animation: motion-dot-pulse 3s cubic-bezier(0.2, 0.6, 0.35, 1) 1.4s infinite
+      backwards;
+  }
+
+  /* ---------- Page titles: soft masked rise on load ---------- */
+
+  :root:not([data-reduced-motion="true"]) .work-page__title,
+  :root:not([data-reduced-motion="true"]) .about-hero__title,
+  :root:not([data-reduced-motion="true"]) .contact-hero__title,
+  :root:not([data-reduced-motion="true"]) .case-study__title {
+    animation: motion-rise-heading var(--reveal-heading-duration)
+      var(--reveal-ease) 100ms backwards;
+  }
+
+  /* ---------- Scroll reveals (tagged by useScrollReveal) ----------
+     Waiting blocks are only transparent; the entrance itself is a one-shot
+     animation, so nothing lingers afterwards to slow hover or tilt. */
+
+  :root:not([data-reduced-motion="true"])
+    [data-reveal]:not([data-reveal="group"]):not([data-revealed]):not(
+      :focus-within
+    ),
+  :root:not([data-reduced-motion="true"])
+    [data-reveal="group"]:not([data-revealed]):not(:focus-within)
+    [data-reveal-item] {
+    opacity: 0;
+  }
+
+  :root:not([data-reduced-motion="true"]) [data-reveal="label"][data-revealed] {
+    animation: motion-rise-label var(--reveal-label-duration) var(--reveal-ease)
+      var(--reveal-delay, 0ms) backwards;
+  }
+
+  :root:not([data-reduced-motion="true"]) [data-reveal="text"][data-revealed] {
+    animation: motion-rise-text var(--reveal-text-duration) var(--reveal-ease)
+      var(--reveal-delay, 0ms) backwards;
+  }
+
+  :root:not([data-reduced-motion="true"]) [data-reveal="media"][data-revealed] {
+    animation: motion-rise-media var(--reveal-media-duration) var(--reveal-ease)
+      var(--reveal-delay, 0ms) backwards;
+  }
+
+  :root:not([data-reduced-motion="true"])
+    [data-reveal="heading"][data-revealed] {
+    animation: motion-rise-heading var(--reveal-heading-duration)
+      var(--reveal-ease) var(--reveal-delay, 0ms) backwards;
+  }
+
+  /* Group items enter in their set order after the group triggers */
+  :root:not([data-reduced-motion="true"])
+    [data-reveal="group"][data-revealed]
+    [data-reveal-item] {
+    animation-timing-function: var(--reveal-ease);
+    animation-delay: calc(
+      var(--reveal-delay, 0ms) + var(--reveal-order, 0) *
+        var(--reveal-stagger) * 1.5
+    );
+    animation-fill-mode: backwards;
+  }
+
+  :root:not([data-reduced-motion="true"])
+    [data-reveal="group"][data-revealed]
+    [data-reveal-item="text"] {
+    animation-name: motion-rise-text;
+    animation-duration: var(--reveal-text-duration);
+  }
+
+  :root:not([data-reduced-motion="true"])
+    [data-reveal="group"][data-revealed]
+    [data-reveal-item="media"] {
+    animation-name: motion-rise-media;
+    animation-duration: var(--reveal-media-duration);
+  }
+
+  /* ---------- Header: name eases slightly smaller after scrolling ---------- */
+
+  :root:not([data-reduced-motion="true"]) .site-logo {
+    transform-origin: left center;
+
+    transition: transform var(--duration-medium) var(--ease-standard);
+  }
+
+  :root:not([data-reduced-motion="true"]) .site-header.is-scrolled .site-logo {
+    transform: scale(0.92);
+  }
+
+  /* ---------- Buttons: the primary arrow nudges (lift: GLASS BUTTONS) ---------- */
+
+  :root:not([data-reduced-motion="true"])
+    .hero__primary-link
+    > span[aria-hidden] {
+    display: inline-block;
+
+    transition: transform var(--duration-medium) var(--motion-ease);
+  }
+
+  :root:not([data-reduced-motion="true"])
+    .hero__primary-link:is(:hover, :focus-visible)
+    > span[aria-hidden] {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* =========================================================
+   SCROLL SCENE
+   Motion that follows scroll position. useScrollScene writes progress
+   variables (--sp, --sc, --se) on tracked elements; these rules turn them
+   into movement. Uses translate / scale / opacity, which combine with the
+   transform-based reveal animations instead of replacing them.
+   Desktop and tablet only (phones stay calm), never with reduced motion.
+   ========================================================= */
+
+:root {
+  --scene-strength: 1;
+}
+
+@media (max-width: 1000px) {
+  :root {
+    --scene-strength: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 701px) {
+  /* ---------- Home hero: layered exit as scrolling begins ---------- */
+
+  :root:not([data-reduced-motion="true"]) .hero__eyebrow {
+    translate: 0 calc(var(--se, 0) * -12px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__title-primary {
+    translate: 0 calc(var(--se, 0) * -48px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__title-secondary {
+    translate: 0 calc(var(--se, 0) * -34px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__intro {
+    translate: 0 calc(var(--se, 0) * -24px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__actions {
+    translate: 0 calc(var(--se, 0) * -16px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .hero__content {
+    opacity: calc(1 - var(--se, 0) * 0.25);
+  }
+
+  /* ---------- Sections drift up and soften as they leave ---------- */
+
+  :root:not([data-reduced-motion="true"])
+    :is(
+      .about-section,
+      .case-study__overview,
+      .case-study__media-section,
+      .case-study__section,
+      .case-study__design-showcase,
+      .case-study__reflection,
+      .ghost-direction,
+      .ghost-workflow
+    ) {
+    translate: 0 calc(var(--se, 0) * -20px * var(--scene-strength));
+    opacity: calc(1 - var(--se, 0) * 0.35);
+  }
+
+  /* ---------- Headings move a touch faster than their text ---------- */
+
+  :root:not([data-reduced-motion="true"]) .about-section__heading {
+    translate: 0 calc(var(--sc, 0) * -28px * var(--scene-strength));
+  }
+
+  :root:not([data-reduced-motion="true"]) .case-study__section-heading {
+    translate: 0 calc(var(--sc, 0) * -20px * var(--scene-strength));
+  }
+}
+
+/* About: two headings hold briefly while their text scrolls past
+   (two-column layout only; the hold is just the section's own height) */
+@media (prefers-reduced-motion: no-preference) and (min-width: 901px) {
+  :root:not([data-reduced-motion="true"])
+    .about-section--pinned
+    .about-section__heading {
+    position: sticky;
+    top: calc(var(--header-height) + 2.5rem);
+
+    translate: none;
+  }
+}
+
+/* =========================================================
+   HOME — SCROLL STORY
+   Hero → Selected Work (scroll-driven scene) → About → Contact.
+   One markup, three layouts:
+   - default (≤ 900px): native horizontal swipe row, one card at a time
+   - ≥ 901px with reduced motion: static two-column grid
+   - ≥ 901px with motion: tall section + sticky stage; --stick (written by
+     useScrollScene) slides the track sideways
+   ========================================================= */
+
+/* The scene is full-bleed: clip at the full-width <main> (not the 1400px
+   page box, which would cut the scene's edges) so 100vw never causes
+   sideways scroll. `clip` keeps sticky positioning working. */
+main:has(.home-page) {
+  overflow-x: clip;
+}
+
+.home-page {
+  --home-inset: 2rem;
+}
+
+@media (max-width: 700px) {
+  .home-page {
+    --home-inset: 1rem;
+  }
+}
+
+/* Inside the full-bleed scene: match the content width of the rest of Home
+   (page padding + section inset) */
+.home-work__header {
+  width: min(
+    calc(min(100%, 1400px) - var(--home-inset) * 2 - var(--page-padding) * 2),
+    var(--page-max-width)
+  );
+  margin-inline: auto;
+}
+
+.home-work {
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.home-work__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: var(--space-4);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.home-work__title {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: max(var(--font-size-sm), 14px);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.home-work__all {
+  display: inline-flex;
+  gap: var(--space-2);
+
+  color: var(--color-text);
+
+  font-size: max(var(--font-size-sm), 14px);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-work__all:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.home-work__track {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.home-work__media {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  aspect-ratio: 16 / 9;
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.home-work__media-link {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.home-work__media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.home-work__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+
+  margin-top: var(--space-4);
+}
+
+.home-work__index,
+.home-work__year {
+  color: var(--color-text-muted);
+
+  font-size: max(var(--font-size-sm), 14px);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.home-work__name {
+  flex: 1;
+
+  margin: 0;
+
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.home-work__name a {
+  text-decoration: none;
+}
+
+.home-work__name a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+
+/* ≤ 900px: a button-controlled carousel. One project at a time; the
+   others are stacked in the same grid cell, hidden and inert. */
+@media (max-width: 900px) {
+  .home-work__viewport {
+    --carousel-w: min(90vw, 820px);
+
+    position: relative;
+
+    width: var(--carousel-w);
+    margin-inline: auto;
+  }
+
+  .home-work__track {
+    display: grid;
+  }
+
+  .home-work__card {
+    grid-area: 1 / 1;
+
+    min-width: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    translate: 24px 0;
+
+    transition:
+      opacity 360ms var(--ease-standard),
+      translate 360ms var(--ease-standard),
+      visibility 0s linear 360ms;
+  }
+
+  .home-work__card.is-before {
+    translate: -24px 0;
+  }
+
+  .home-work__card.is-active {
+    opacity: 1;
+    visibility: visible;
+    translate: none;
+
+    transition-delay: 0s;
+  }
+
+  /* Previous / Next: 44px targets at the sides of the media */
+  .home-work__nav {
+    position: absolute;
+    top: calc(var(--carousel-w) * 9 / 32 - 22px);
+    z-index: 2;
+
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+    color: var(--color-text);
+
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+
+    cursor: pointer;
+
+    transition: opacity var(--duration-fast) var(--ease-standard);
+  }
+
+  .home-work__nav--previous {
+    left: 10px;
+  }
+
+  .home-work__nav--next {
+    right: 10px;
+  }
+
+  .home-work__nav:disabled {
+    opacity: 0.3;
+
+    cursor: default;
+  }
+}
+
+/* Carousel controls exist only on small screens */
+@media (min-width: 901px) {
+  .home-work__viewport {
+    display: contents;
+  }
+
+  .home-work__nav {
+    display: none;
+  }
+}
+
+.home-work__status {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ≥ 901px without motion: a calm static grid */
+@media (min-width: 901px) {
+  .home-work__track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
+
+    width: min(
+      calc(min(100%, 1400px) - var(--home-inset) * 2 - var(--page-padding) * 2),
+      var(--page-max-width)
+    );
+    margin-inline: auto;
+    padding: 0;
+
+    overflow: visible;
+  }
+
+  .home-work__media {
+    border-radius: var(--radius-xl);
+  }
+}
+
+/* ≥ 901px with motion: the cinematic scene.
+   --stick (0 → 1, written by useScrollScene) is split into four phases:
+     A arrival    the scene rises into view
+     B carousel   project to project
+     C dissolve   side projects drift out and fade
+     D expansion  the last project grows and flattens
+   All numbers (phase ranges, path, scales, finale) come from
+   src/components/home/sceneConfig.ts as --hw-* custom properties set on
+   the section, shared with the WebGL renderer. Every value is a continuous
+   function of --stick, so it reverses exactly when scrolling back up. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  :root:not([data-reduced-motion="true"]) .home-work {
+    --card-w: var(--hw-card-w);
+    --card-gap: var(--hw-card-gap);
+
+    --s: var(--stick, 0);
+    --t-arrive: clamp(0, calc(var(--s) / var(--hw-arrive-end)), 1);
+    --t-dissolve: clamp(
+      0,
+      calc((var(--s) - var(--hw-dissolve-start)) / var(--hw-dissolve-span)),
+      1
+    );
+    --t-expand: clamp(
+      0,
+      calc((var(--s) - var(--hw-expand-start)) / var(--hw-expand-span)),
+      1
+    );
+
+    /* a: the (fractional) index of the centred project */
+    --a: calc(
+      clamp(
+          0,
+          calc((var(--s) - var(--hw-carousel-start)) / var(--hw-carousel-span)),
+          1
+        ) *
+        (var(--hw-count) - 1)
+    );
+
+    /* scroll per project transition, plus room for arrival / finale */
+    height: calc(
+      100svh + (var(--hw-count) - 1) * var(--hw-scroll-per-project) +
+        var(--hw-scroll-extra)
+    );
+    padding-block: 0;
+  }
+
+  /* Pinned just below the header; clipped so nothing reaches the header.
+     No perspective/transform here, so the header is never inside a 3D
+     context and fixed overlays are never trapped by it. */
+  :root:not([data-reduced-motion="true"]) .home-work__stage {
+    position: sticky;
+    top: var(--header-height);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: calc(100svh - var(--header-height));
+
+    overflow: clip;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work__header,
+  :root:not([data-reduced-motion="true"]) .home-work__track {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* The label row quietens during the dissolve and steps aside for the finale */
+  :root:not([data-reduced-motion="true"]) .home-work__header {
+    opacity: calc((1 - 0.5 * var(--t-dissolve)) * (1 - var(--t-expand)));
+    translate: 0 calc(var(--t-expand) * -16px);
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work__track {
+    display: flex;
+    gap: var(--card-gap);
+
+    width: max-content;
+    margin: 0;
+    padding: 0 calc((100vw - var(--card-w)) / 2);
+
+    overflow: visible;
+
+    /* x: project to project. y: rises in on arrival; lifts by half the
+       final project's growth so it stays centred while expanding */
+    translate: calc(var(--a) * -1 * (var(--card-w) + var(--card-gap)))
+      calc(
+        (1 - var(--t-arrive)) * var(--hw-arrive-rise) - var(--t-expand) *
+          var(--hw-expand-lift)
+      );
+    opacity: calc(
+      var(--hw-arrive-opacity) + (1 - var(--hw-arrive-opacity)) *
+        var(--t-arrive)
+    );
+  }
+
+  /* u: signed distance from centre (-1 left … 0 centre … 1 right)
+     d: unsigned distance, k: flatness (1 at centre, falls off steeply) */
+  :root:not([data-reduced-motion="true"]) .home-work__card {
+    --u: clamp(-1, calc(var(--i) - var(--a)), 1);
+    --d: max(var(--u), calc(var(--u) * -1));
+    --k: calc((1 - var(--d)) * (1 - var(--d)) * (1 - var(--d)));
+    --last: clamp(0, calc(var(--i) - var(--hw-count) + 2), 1);
+    --side-fade: calc(1 - var(--t-dissolve) * (1 - var(--last)));
+
+    flex: 0 0 var(--card-w);
+
+    /* A shallow U-shaped path: cards arrive low, rise to centre, sink as
+       they leave. Side cards angle their outer edge toward the viewer, as
+       if lining the inside of a gentle curve. */
+    transform: translateX(
+        calc(var(--u) * var(--t-dissolve) * var(--hw-dissolve-drift))
+      )
+      translateY(calc(var(--d) * var(--d) * var(--hw-path-depth)))
+      perspective(var(--hw-perspective))
+      rotateY(calc(var(--u) * -1 * var(--hw-rotate-y)))
+      rotateZ(calc(var(--u) * var(--hw-rotate-z)))
+      scale(calc(1 - var(--hw-side-scale-drop) * var(--d)));
+    transform-origin: center center;
+  }
+
+  /* Curved-edge illusion (a CSS approximation; pixels are not warped):
+     an ellipse clip that is far larger than the card at the centre (no
+     effect) and tightens toward the sides, so the top and bottom edges of
+     outer cards bow like a curved screen. */
+  :root:not([data-reduced-motion="true"]) .home-work__media {
+    opacity: calc(
+      (1 - var(--hw-media-opacity-drop) * var(--d)) * var(--side-fade)
+    );
+    clip-path: ellipse(
+      calc(120% + 180% * var(--k)) calc(53% + 147% * var(--k)) at 50% 50%
+    );
+
+    /* Finale: the last project grows (64vw → 80vw) */
+    scale: calc(1 + var(--hw-expand-growth) * var(--t-expand) * var(--last));
+    transform-origin: top center;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work__meta {
+    opacity: calc(
+      (1 - var(--hw-meta-opacity-drop) * var(--d)) * var(--side-fade)
+    );
+
+    /* stays just below the growing media */
+    translate: 0
+      calc(var(--t-expand) * var(--last) * var(--hw-expand-meta-shift));
+  }
+
+  /* ---------- Background: slow abstract light behind the cards ---------- */
+
+  /* Fades in on arrival; thins out for the finale so the last project
+     becomes the focus */
+  :root:not([data-reduced-motion="true"]) .home-work__backdrop {
+    display: block;
+
+    opacity: calc(
+      var(--t-arrive) * (1 - 0.25 * var(--t-dissolve)) *
+        (1 - 0.35 * var(--t-expand))
+    );
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work__glow--a {
+    translate: calc(var(--s) * -20vw) calc(var(--s) * 8vh);
+    rotate: calc(var(--s) * 25deg);
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work__glow--b {
+    translate: calc(var(--s) * 12vw) calc(var(--s) * -6vh);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :root:not([data-reduced-motion="true"]) .home-work__media img,
+    :root:not([data-reduced-motion="true"])
+      .home-work__media
+      .video-preview:not(.video-preview--expanded)
+      video {
+      transition: transform 700ms var(--motion-ease);
+    }
+
+    :root:not([data-reduced-motion="true"])
+      .home-work__card:hover
+      .home-work__media
+      img,
+    :root:not([data-reduced-motion="true"])
+      .home-work__card:hover
+      .home-work__media
+      .video-preview:not(.video-preview--expanded)
+      video {
+      transform: scale(1.03);
+    }
+  }
+}
+
+/* WebGL mode (set by useBendScene when supported). The canvas draws the
+   bent media; DOM cards keep the same path and scale but stay flat, so
+   links, video controls and focus line up with what is drawn. Only the
+   imagery is hidden — never an expanded video, which stays a DOM overlay. */
+.home-work__canvas {
+  display: none;
+}
+
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  :root:not([data-reduced-motion="true"]) .home-work--webgl .home-work__canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work--webgl .home-work__card {
+    transform: translateX(
+        calc(var(--u) * var(--t-dissolve) * var(--hw-dissolve-drift))
+      )
+      translateY(calc(var(--d) * var(--d) * var(--hw-path-depth)))
+      scale(calc(1 - var(--hw-side-scale-drop) * var(--d)));
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-work--webgl .home-work__media {
+    clip-path: none;
+
+    background: transparent;
+    border-color: transparent;
+  }
+
+  :root:not([data-reduced-motion="true"])
+    .home-work--webgl
+    .home-work__media
+    img,
+  :root:not([data-reduced-motion="true"])
+    .home-work--webgl
+    .home-work__media
+    .video-preview:not(.video-preview--expanded)
+    video {
+    opacity: 0;
+  }
+}
+
+/* Backdrop shapes: soft radial light and two faint elliptical rings.
+   Only shown in the cinematic scene (above); hidden elsewhere. */
+.home-work__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  display: none;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.home-work__glow {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.home-work__glow--a {
+  top: 5%;
+  left: -5%;
+
+  width: 70vw;
+  height: 75%;
+
+  background: radial-gradient(closest-side, var(--hw-glow-a), transparent);
+}
+
+.home-work__glow--b {
+  right: -12%;
+  bottom: -15%;
+
+  width: 60vw;
+  height: 70%;
+
+  background: radial-gradient(closest-side, var(--hw-glow-b), transparent);
+}
+
+/* A sticky stage is its own stacking context, so an expanded video inside
+   it could never rise above the sticky header. Lift the stage above the
+   header (z-index 1000) while a video is expanded. */
+.home-work__stage:has(.video-preview--expanded) {
+  z-index: 1001;
+}
+
+:root[data-high-contrast="true"] .home-work__backdrop {
+  display: none !important;
+}
+
+/* ---------- Home About: the About sections, more compact ---------- */
+
+.home-about {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.home-about__label {
+  width: min(calc(100% - var(--page-padding) * 2), var(--page-max-width));
+  margin: 0 auto clamp(1rem, 2vw, 1.5rem);
+}
+
+.home-about .about-section {
+  padding-block: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.home-about .about-section__heading h2 {
+  font-size: clamp(1.75rem, 1rem + 2vw, 2.75rem);
+}
+
+/* ---------- Home Contact: the closing scene ---------- */
+
+.home-contact {
+  padding-block: clamp(4rem, 8vw, 7rem) clamp(4rem, 8vw, 6rem);
+}
+
+.home-contact__intro-block {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: end;
+  column-gap: clamp(2rem, 4vw, 4rem);
+
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.home-contact__title {
+  margin: 0;
+
+  font-size: clamp(2.5rem, 1.2rem + 3.6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.home-contact__intro {
+  max-width: 40rem;
+  margin: 0;
+
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+}
+
+/* Already inside the padded page, so only the section inset applies */
+.home-contact__cta {
+  width: min(calc(100% - var(--page-padding) * 2), var(--page-max-width));
+  margin-inline: auto;
+  padding-top: clamp(2rem, 4vw, 3rem);
+}
+
+@media (max-width: 900px) {
+  .home-contact__intro-block {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-5);
+  }
+}
+
+/* =========================================================
+   HOME BACKGROUND — LINE WAVES AND SCROLL TINT (HomeWaves.tsx)
+   Three groups of thin parallel lines (hero, Selected Work, About →
+   Contact) behind all content, plus fixed tint layers crossfaded by
+   opacity as the page progresses. Both sit below the content at negative
+   z-index without creating a stacking context; the tints sit under the
+   background grain (z -2), the lines just above it (z -1).
+   ========================================================= */
+
+.home-page {
+  position: relative;
+}
+
+/* --- background tint --- */
+
+.home-backdrop {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+}
+
+.home-backdrop__layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.home-backdrop__layer--hero {
+  background: var(--home-bg-hero);
+}
+
+.home-backdrop__layer--work {
+  background: var(--home-bg-work);
+}
+
+.home-backdrop__layer--about {
+  background: var(--home-bg-about);
+}
+
+/* --- line waves --- */
+
+.home-waves {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: -1;
+
+  width: 100vw;
+  margin-left: -50vw;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  --wave-motion: 1;
+}
+
+.home-waves--tablet {
+  --wave-motion: 0.7;
+
+  opacity: 0.9;
+}
+
+.home-waves--phone {
+  --wave-motion: 0.5;
+
+  opacity: 0.85;
+}
+
+.home-waves__group {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 0;
+}
+
+.home-waves__group svg {
+  display: block;
+
+  overflow: visible;
+}
+
+/* outer lines + halo, and the middle of the bundle, as two layers */
+.home-waves__layer {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.home-waves__accent-shape {
+  width: 100%;
+  height: 100%;
+}
+
+.home-waves__line {
+  fill: none;
+
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.home-waves__halo {
+  fill: none;
+  stroke: var(--wave-halo);
+  stroke-linecap: round;
+}
+
+/* Small abstract blooms beside the curves; static without motion */
+.home-waves__accent {
+  position: absolute;
+
+  opacity: 0.7;
+
+  fill: none;
+  stroke: var(--wave-accent);
+  stroke-width: 1px;
+  stroke-linecap: round;
+}
+
+.home-waves__accent path {
+  vector-effect: non-scaling-stroke;
+}
+
+.home-waves__accent circle {
+  fill: var(--wave-accent);
+  stroke: none;
+}
+
+.home-waves__line--1 {
+  stroke: var(--wave-1);
+}
+
+.home-waves__line--2 {
+  stroke: var(--wave-2);
+}
+
+.home-waves__line--3 {
+  stroke: var(--wave-3);
+}
+
+.home-waves__line--4 {
+  stroke: var(--wave-4);
+}
+
+:root[data-high-contrast="true"] .home-waves,
+:root[data-high-contrast="true"] .home-backdrop {
+  display: none;
+}
+
+/* --- scroll motion (each group's own --sp; page --sp for the tint) --- */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Tints stack hero < work < about. Each fades in over its own window and
+     stays until the next one has fully covered it, so the base colour never
+     shows through mid-crossfade; About fades out to the base by Contact.
+     r-* = fade-in progress, s-* = 1 once that tint is fully in. */
+  :root:not([data-reduced-motion="true"]) .home-backdrop {
+    --r-hero: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-hero-in, 2) + var(--bg-hero-fade, 0.1)) /
+        (2 * var(--bg-hero-fade, 0.1)),
+      1
+    );
+    --r-work: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-work-in, 2) + var(--bg-work-fade, 0.1)) /
+        (2 * var(--bg-work-fade, 0.1)),
+      1
+    );
+    --r-about: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-about-in, 2) + var(--bg-about-fade, 0.1)) /
+        (2 * var(--bg-about-fade, 0.1)),
+      1
+    );
+    --r-contact: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-contact-in, 2) + var(--bg-contact-fade, 0.1)) /
+        (2 * var(--bg-contact-fade, 0.1)),
+      1
+    );
+    --s-work: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-work-in, 2) - var(--bg-work-fade, 0.1)) * 100000,
+      1
+    );
+    --s-about: clamp(
+      0,
+      (var(--sp, 0) - var(--bg-about-in, 2) - var(--bg-about-fade, 0.1)) *
+        100000,
+      1
+    );
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-backdrop__layer {
+    will-change: opacity;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-backdrop__layer--hero {
+    opacity: calc(var(--r-hero) * (1 - var(--s-work)));
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-backdrop__layer--work {
+    opacity: calc(var(--r-work) * (1 - var(--s-about)));
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-backdrop__layer--about {
+    opacity: calc(var(--r-about) * (1 - var(--r-contact)));
+  }
+
+  /* Accents grow in (0.85 → 1, slight turn) and fade out again as they
+     pass the middle of the viewport: --d is −1…1 across their window */
+  :root:not([data-reduced-motion="true"]) .home-waves__accent {
+    --d: calc((var(--sp, -9) - var(--at)) / var(--aw));
+    --v: clamp(0, 1 - max(var(--d), -1 * var(--d)), 1);
+
+    opacity: calc(var(--v) * 1.6);
+    scale: calc(0.85 + 0.15 * var(--v));
+    rotate: calc(var(--d) * 24deg);
+
+    will-change: opacity, transform;
+  }
+
+  /* Idle flow. Each bundle is three layers — its two edges and its
+     middle — drifting, turning and stretching around the bundle's twist
+     (--pivot) on different, overlapping cycles. The edges move against
+     each other, so the bundle visibly widens, narrows and shears while it
+     sways. Transform-only (composited); the paths are never rebuilt.
+     Amplitudes: --idle-* per group × --wave-motion per screen size ×
+     --l-* direction per layer. Scroll moves the whole group on top. */
+  :root:not([data-reduced-motion="true"]) .home-waves__layer {
+    transform-origin: var(--pivot, 50% 50%);
+
+    will-change: transform;
+
+    animation: wave-idle var(--l-time) ease-in-out var(--l-delay) infinite
+      alternate;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-waves__layer--upper {
+    --l-time: 12s;
+    --l-delay: 0s;
+    --l-x: 1;
+    --l-y: -1;
+    --l-r: 1;
+    --l-sx: 1;
+    --l-sy: 1;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-waves__layer--lower {
+    --l-time: 10.5s;
+    --l-delay: -3.5s;
+    --l-x: 0.8;
+    --l-y: 1;
+    --l-r: -0.7;
+    --l-sx: -1;
+    --l-sy: -1;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-waves__layer--inner {
+    --l-time: 13.5s;
+    --l-delay: -6s;
+    --l-x: -0.6;
+    --l-y: 0.45;
+    --l-r: 0.5;
+    --l-sx: 0.6;
+    --l-sy: -0.6;
+  }
+
+  /* Hero: full strength */
+  :root:not([data-reduced-motion="true"]) .home-waves__group {
+    --idle-x: 26px;
+    --idle-y: 16px;
+    --idle-r: 1.7deg;
+    --idle-sx: 0.015;
+    --idle-sy: 0.03;
+  }
+
+  /* Work ≈ 70 %, About ≈ 55 %; these bundles are several screens tall, so
+     their turn and vertical stretch are damped further or the far ends
+     would swing */
+  :root:not([data-reduced-motion="true"]) .home-waves__group--work {
+    --idle-x: 15px;
+    --idle-y: 9px;
+    --idle-r: 0.35deg;
+    --idle-sx: 0.01;
+    --idle-sy: 0.004;
+  }
+
+  :root:not([data-reduced-motion="true"]) .home-waves__group--about {
+    --idle-x: 12px;
+    --idle-y: 7px;
+    --idle-r: 0.3deg;
+    --idle-sx: 0.008;
+    --idle-sy: 0.003;
+  }
+
+  /* Accents: a slow turn and grow/shrink inside the scroll-driven bloom of
+     their wrapper, on staggered timings */
+  :root:not([data-reduced-motion="true"]) .home-waves__accent-shape {
+    animation: wave-accent-idle 9s ease-in-out var(--idle-delay, 0s) infinite
+      alternate;
+  }
+
+  :root:not([data-reduced-motion="true"])
+    .home-waves__accent:nth-of-type(2n)
+    .home-waves__accent-shape {
+    animation-duration: 11.5s;
+    animation-direction: alternate-reverse;
+  }
+
+  :root:not([data-reduced-motion="true"])
+    .home-waves__accent:nth-of-type(3n)
+    .home-waves__accent-shape {
+    animation-duration: 13s;
+  }
+
+  /* Whole groups move (composited, no repaint of the lines) */
+  :root:not([data-reduced-motion="true"]) .home-waves__group {
+    will-change: transform;
+  }
+
+  /* Hero: drifts and lifts, turning slowly as the hero leaves */
+  :root:not([data-reduced-motion="true"]) .home-waves__group--hero {
+    translate: calc((var(--sp, 0.3) - 0.3) * -160px * var(--wave-motion))
+      calc((var(--sp, 0.3) - 0.3) * 80px * var(--wave-motion));
+    rotate: calc((var(--sp, 0.3) - 0.3) * 9deg * var(--wave-motion));
+    scale: calc(1 + (var(--sp, 0.3) - 0.3) * 0.16 * var(--wave-motion));
+  }
+
+  /* Selected Work: sweeps from upper right toward lower left and back
+     while the projects travel, slowly changing its angle */
+  :root:not([data-reduced-motion="true"]) .home-waves__group--work {
+    translate: calc(sin(var(--sp, 0.5) * 360deg) * -180px * var(--wave-motion))
+      0;
+    rotate: calc((var(--sp, 0.5) - 0.5) * 10deg * var(--wave-motion));
+  }
+
+  /* About: a calm sideways drift, opposite to Work */
+  :root:not([data-reduced-motion="true"]) .home-waves__group--about {
+    translate: calc((var(--sp, 0.5) - 0.5) * 160px * var(--wave-motion))
+      calc((var(--sp, 0.5) - 0.5) * -40px * var(--wave-motion));
+    rotate: calc((0.5 - var(--sp, 0.5)) * 5deg * var(--wave-motion));
+    scale: calc(1 + (var(--sp, 0.5) - 0.5) * 0.1 * var(--wave-motion));
+  }
+}
+
+/* =========================================================
+   GLASS BUTTONS
+   Every real button control shares one tactile glass surface: frosted
+   fill, a visible edge, a bright top highlight, a darker lower edge and a
+   soft shadow underneath. It sits slightly raised, lifts on hover and
+   presses down on :active (the inner shadow deepens, the drop shadow
+   shrinks). Navigation text links are not included.
+
+   Three families share the mechanics through --b-* variables: primary
+   (dark pill in light, light pill in dark), glass (secondary and icon
+   buttons) and media (always smoked, over imagery). With reduced motion
+   the raised and pressed looks stay; only the travel and the
+   transitions are removed.
+   ========================================================= */
+
+.hero__primary-link {
+  --b-fill: var(--btn-primary-fill);
+  --b-fill-hover: var(--btn-primary-fill-hover);
+  --b-text: var(--btn-primary-text);
+  --b-edge: var(--btn-primary-edge);
+  --b-edge-hover: var(--btn-primary-edge-hover);
+  --b-top: var(--btn-primary-top);
+  --b-bottom: var(--btn-primary-bottom);
+  --b-press: var(--btn-primary-press);
+  --b-drop: var(--btn-primary-drop);
+  --b-drop-hover: var(--btn-primary-drop-hover);
+  --b-drop-press: var(--btn-primary-drop-press);
+}
+
+:is(
+  .hero__secondary-link,
+  .header-icon-button,
+  .accessibility-menu > button,
+  .menu-toggle
+) {
+  --b-fill: var(--btn-glass-fill);
+  --b-fill-hover: var(--btn-glass-fill-hover);
+  --b-text: var(--btn-glass-text);
+  --b-edge: var(--btn-glass-edge);
+  --b-edge-hover: var(--btn-glass-edge-hover);
+  --b-top: var(--btn-glass-top);
+  --b-bottom: var(--btn-glass-bottom);
+  --b-press: var(--btn-glass-press);
+  --b-drop: var(--btn-glass-drop);
+  --b-drop-hover: var(--btn-glass-drop-hover);
+  --b-drop-press: var(--btn-glass-drop-press);
+}
+
+/* Over photos and video (video controls, the lightbox close button and the
+   mobile carousel arrows) the glass is always smoked, in both themes */
+:is(
+  .home-work__nav,
+  .work-carousel__nav,
+  .video-preview__control,
+  .image-lightbox__close
+) {
+  --b-fill: linear-gradient(
+    180deg,
+    rgba(58, 54, 66, 0.5) 0%,
+    rgba(18, 17, 22, 0.62) 100%
+  );
+  --b-fill-hover: linear-gradient(
+    180deg,
+    rgba(74, 70, 84, 0.6) 0%,
+    rgba(24, 23, 28, 0.7) 100%
+  );
+  --b-text: #ffffff;
+  --b-edge: rgba(255, 255, 255, 0.28);
+  --b-edge-hover: rgba(255, 255, 255, 0.46);
+  --b-top: rgba(255, 255, 255, 0.34);
+  --b-bottom: rgba(0, 0, 0, 0.5);
+  --b-press: rgba(0, 0, 0, 0.65);
+  --b-drop: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --b-drop-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 20px rgba(0, 0, 0, 0.4);
+  --b-drop-press: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+:root[data-high-contrast="true"]
+  :is(
+    .home-work__nav,
+    .work-carousel__nav,
+    .video-preview__control,
+    .image-lightbox__close
+  ) {
+  --b-fill: #000000;
+  --b-fill-hover: #000000;
+  --b-edge: #ffffff;
+  --b-edge-hover: #ffff00;
+  --b-top: transparent;
+  --b-bottom: transparent;
+  --b-press: transparent;
+  --b-drop: 0 0 transparent;
+  --b-drop-hover: 0 0 transparent;
+  --b-drop-press: 0 0 transparent;
+}
+
+:is(
+  .hero__primary-link,
+  .hero__secondary-link,
+  .header-icon-button,
+  .accessibility-menu > button,
+  .menu-toggle,
+  .home-work__nav,
+  .work-carousel__nav,
+  .video-preview__control,
+  .image-lightbox__close
+) {
+  background: var(--b-fill);
+  color: var(--b-text);
+
+  border: 1px solid var(--b-edge);
+
+  /* top highlight, darker lower edge, (pressed shade), drop shadow */
+  box-shadow:
+    inset 0 1px 0 var(--b-top),
+    inset 0 -2px 2px -1px var(--b-bottom),
+    inset 0 0 0 0 transparent,
+    var(--b-drop);
+
+  backdrop-filter: blur(14px) saturate(1.45);
+  -webkit-backdrop-filter: blur(14px) saturate(1.45);
+
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    translate 160ms var(--ease-standard),
+    box-shadow 160ms var(--ease-standard),
+    border-color 160ms var(--ease-standard),
+    opacity 160ms var(--ease-standard);
+}
+
+@media (hover: hover) {
+  :is(
+      .hero__primary-link,
+      .hero__secondary-link,
+      .header-icon-button,
+      .accessibility-menu > button,
+      .menu-toggle,
+      .home-work__nav,
+      .work-carousel__nav,
+      .video-preview__control,
+      .image-lightbox__close
+    ):hover:not(:disabled, :active) {
+    translate: 0 -1.5px;
+
+    background: var(--b-fill-hover);
+
+    border-color: var(--b-edge-hover);
+
+    box-shadow:
+      inset 0 1px 0 var(--b-top),
+      inset 0 -2px 2px -1px var(--b-bottom),
+      inset 0 0 0 0 transparent,
+      var(--b-drop-hover);
+  }
+}
+
+/* Pressed: sinks below its resting place, the drop shadow tightens and an
+   inner shadow from the top edge makes it read as pushed in */
+:is(
+    .hero__primary-link,
+    .hero__secondary-link,
+    .header-icon-button,
+    .accessibility-menu > button,
+    .menu-toggle,
+    .home-work__nav,
+    .work-carousel__nav,
+    .video-preview__control,
+    .image-lightbox__close
+  ):active:not(:disabled) {
+  translate: 0 1.5px;
+
+  border-color: var(--b-edge-hover);
+
+  box-shadow:
+    inset 0 1px 0 transparent,
+    inset 0 -1px 1px -1px var(--b-bottom),
+    inset 0 3px 8px var(--b-press),
+    var(--b-drop-press);
+
+  transition-duration: 60ms;
+}
+
+/* The round header toggles sit on the frosted header already, and their
+   tooltips are positioned against the header controls on small screens:
+   a backdrop-filter would make each button the tooltip's containing
+   block (translate does too, so it is only set while hovered/pressed) */
+.header-controls .header-icon-button {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Reduced motion (OS or site setting): same raised and pressed looks,
+   no travel and no animation between them */
+@media (prefers-reduced-motion: reduce) {
+  :is(
+    .hero__primary-link,
+    .hero__secondary-link,
+    .header-icon-button,
+    .accessibility-menu > button,
+    .menu-toggle,
+    .home-work__nav,
+    .work-carousel__nav,
+    .video-preview__control,
+    .image-lightbox__close
+  ) {
+    translate: none !important;
+
+    transition: none;
+  }
+}
+
+:root[data-reduced-motion="true"]
+  :is(
+    .hero__primary-link,
+    .hero__secondary-link,
+    .header-icon-button,
+    .accessibility-menu > button,
+    .menu-toggle,
+    .home-work__nav,
+    .work-carousel__nav,
+    .video-preview__control,
+    .image-lightbox__close
+  ) {
+  translate: none !important;
+
+  transition: none;
+}
+
+/* Video controls meet the 44px touch target on touch screens */
+@media (pointer: coarse) {
+  .video-preview__control {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* =========================================================
+   REFINEMENTS — LABELS, CONTACT SCALE, MEDIA FRAMES, ROUND CONTROLS
+   ========================================================= */
+
+/* Small uppercase section labels: larger, a little heavier and darker,
+   with a soft halo of page colour so line waves never swallow them */
+:root {
+  --font-size-label: clamp(0.9375rem, 0.875rem + 0.15vw, 1rem);
+}
+
+.hero__eyebrow,
+.home-work__title,
+.case-study__label,
+.case-study__eyebrow,
+.contact-link__label {
+  color: var(--color-label);
+
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  text-shadow:
+    0 0 3px var(--color-background),
+    0 0 12px var(--color-background);
+}
+
+/* Contact: quieter display sizes and tighter rows */
+.home-contact__title,
+.contact-hero__title {
+  font-size: clamp(1.875rem, 1.2rem + 2.4vw, 3.375rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.contact-link {
+  padding-block: clamp(1.125rem, 2vw, 1.75rem);
+}
+
+.contact-link__text {
+  font-size: clamp(1.125rem, 0.8rem + 1.2vw, 1.875rem);
+}
+
+@media (max-width: 700px) {
+  .contact-hero__title {
+    font-size: clamp(1.875rem, 8.5vw, 2.5rem);
+  }
+}
+
+/* Media frames: a thin glass rim with a lit top edge, a faint frosted mat
+   around it and a soft shadow — framed, not pressable */
+:is(
+  .work-carousel__media,
+  .home-work__media,
+  .case-study__video,
+  .ghost-frame__media
+) {
+  position: relative;
+
+  border-color: var(--media-rim);
+
+  box-shadow:
+    0 0 0 5px var(--media-surround),
+    var(--media-shadow);
+}
+
+:is(
+  .work-carousel__media,
+  .home-work__media,
+  .case-study__video,
+  .ghost-frame__media
+)::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: inherit;
+
+  box-shadow:
+    inset 0 1px 0 var(--media-highlight),
+    inset 0 0 0 1px color-mix(in srgb, var(--media-highlight) 35%, transparent);
+
+  pointer-events: none;
+}
+
+/* The bending WebGL planes draw their own image: no flat frame on top */
+.home-work--webgl .home-work__media {
+  box-shadow: none;
+}
+
+.home-work--webgl .home-work__media::after {
+  display: none;
+}
+
+/* Round header toggles: frosted on the desktop header. In the small-screen
+   menu they stay unblurred so their tooltips keep the header controls as
+   containing block. */
+@media (min-width: 1001px) {
+  .header-controls .header-icon-button {
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  }
+}
+
+/* A slow loop through three poses (alternate, so it never jumps): the
+   layer swings one way while lifting, crosses over, then settles the other
+   way — a soft figure-of-eight rather than a straight slide */
+@keyframes wave-idle {
+  0% {
+    transform: translate(
+        calc(var(--idle-x) * var(--l-x) * -1 * var(--wave-motion, 1)),
+        calc(var(--idle-y) * var(--l-y) * 0.4 * var(--wave-motion, 1))
+      )
+      rotate(calc(var(--idle-r) * var(--l-r) * -1 * var(--wave-motion, 1)))
+      scale(
+        calc(1 + var(--idle-sx) * var(--l-sx) * -1 * var(--wave-motion, 1)),
+        calc(1 + var(--idle-sy) * var(--l-sy) * -1 * var(--wave-motion, 1))
+      );
+  }
+
+  35% {
+    transform: translate(
+        calc(var(--idle-x) * var(--l-x) * 0.3 * var(--wave-motion, 1)),
+        calc(var(--idle-y) * var(--l-y) * -1 * var(--wave-motion, 1))
+      )
+      rotate(calc(var(--idle-r) * var(--l-r) * 0.2 * var(--wave-motion, 1)))
+      scale(
+        calc(1 + var(--idle-sx) * var(--l-sx) * 0.4 * var(--wave-motion, 1)),
+        calc(1 + var(--idle-sy) * var(--l-sy) * 0.6 * var(--wave-motion, 1))
+      );
+  }
+
+  70% {
+    transform: translate(
+        calc(var(--idle-x) * var(--l-x) * 1 * var(--wave-motion, 1)),
+        calc(var(--idle-y) * var(--l-y) * 0.2 * var(--wave-motion, 1))
+      )
+      rotate(calc(var(--idle-r) * var(--l-r) * 1 * var(--wave-motion, 1)))
+      scale(
+        calc(1 + var(--idle-sx) * var(--l-sx) * 1 * var(--wave-motion, 1)),
+        calc(1 + var(--idle-sy) * var(--l-sy) * 0.2 * var(--wave-motion, 1))
+      );
+  }
+
+  100% {
+    transform: translate(
+        calc(var(--idle-x) * var(--l-x) * 0.6 * var(--wave-motion, 1)),
+        calc(var(--idle-y) * var(--l-y) * 1 * var(--wave-motion, 1))
+      )
+      rotate(calc(var(--idle-r) * var(--l-r) * 0.6 * var(--wave-motion, 1)))
+      scale(
+        calc(1 + var(--idle-sx) * var(--l-sx) * 0.2 * var(--wave-motion, 1)),
+        calc(1 + var(--idle-sy) * var(--l-sy) * 1 * var(--wave-motion, 1))
+      );
+  }
+}
+
+@keyframes wave-accent-idle {
+  from {
+    opacity: 0.75;
+    transform: rotate(-16deg) scale(0.86);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(16deg) scale(1.08);
+  }
+}
+
+/* =========================================================
+   WORK, ABOUT, CONTACT AND CASE STUDIES — CALMER SCALE
+   Smaller than Home: page titles 40–54px, section headings 30–42px,
+   small headings 20–26px, body 17–18px at 1.6. Home is untouched (these
+   rules are scoped to the other pages' roots).
+   ========================================================= */
+
+:is(.work-page, .about-page, .contact-page, .case-study) {
+  --page-title-size: clamp(2.5rem, 1.6rem + 2.2vw, 3.375rem);
+  --page-heading-size: clamp(1.875rem, 1.3rem + 1.4vw, 2.625rem);
+  --page-subheading-size: clamp(1.25rem, 1.05rem + 0.5vw, 1.625rem);
+  --page-lead-size: clamp(1.1875rem, 1rem + 0.45vw, 1.375rem);
+  --page-body-size: clamp(1.0625rem, 1rem + 0.15vw, 1.125rem);
+}
+
+:is(
+  .work-page__title,
+  .about-hero__title,
+  .contact-hero__title,
+  .case-study__title
+) {
+  font-size: var(--page-title-size);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+/* intros and statements: a lead size, well below the headings */
+.about-hero__statement {
+  font-size: clamp(1.5rem, 1.1rem + 1.1vw, 2.125rem);
+  line-height: 1.25;
+}
+
+.case-study__intro {
+  font-size: clamp(1.25rem, 0.95rem + 0.85vw, 1.75rem);
+  line-height: 1.4;
+}
+
+.case-study__large-text {
+  font-size: var(--page-lead-size);
+  line-height: 1.55;
+}
+
+.work-page__text,
+.contact-hero__intro {
+  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  line-height: 1.6;
+}
+
+/* section headings */
+.about-page .about-section__heading h2,
+.contact-page h2,
+.case-study h2:not(.case-study__label) {
+  font-size: var(--page-heading-size);
+  line-height: 1.08;
+}
+
+.about-page h3,
+.case-study h3 {
+  font-size: var(--page-subheading-size);
+  line-height: 1.2;
+}
+
+/* body copy */
+:is(.about-page, .case-study) p:not([class]),
+.about-page .about-text p {
+  font-size: var(--page-body-size);
+  line-height: 1.6;
+}
+
+/* tighter vertical rhythm */
+.about-page .about-hero {
+  padding-bottom: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.about-page .about-section {
+  padding-block: clamp(2.5rem, 4vw, 3.75rem);
+}
+
+.case-study__back {
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* Contact page links: obvious, not display-sized */
+.contact-page .contact-link {
+  padding-block: clamp(1rem, 1.6vw, 1.375rem);
+}
+
+.contact-page .contact-link__text {
+  font-size: clamp(1.125rem, 0.85rem + 0.9vw, 1.625rem);
+}
+
+@media (max-width: 700px) {
+  :is(
+    .work-page__title,
+    .about-hero__title,
+    .contact-hero__title,
+    .case-study__title
+  ) {
+    font-size: clamp(2.125rem, 9vw, 2.75rem);
+  }
+}
+
+/* ---------- Case-study media: smaller, centred, generous whitespace ---------- */
+
+.case-study {
+  overflow-x: clip;
+}
+
+/* Smaller, softer media with more air around it. Widths per kind of
+   media; one corner radius for every surface (frame, image, video, poster)
+   so clipping lines up. */
+.case-study {
+  --cs-radius: 22px;
+  --cs-video-w: clamp(560px, 64vw, 920px);
+  --cs-image-w: clamp(540px, 61vw, 880px);
+  --cs-frame-w: clamp(560px, 63vw, 900px);
+}
+
+@media (max-width: 1000px) {
+  .case-study {
+    --cs-radius: 19px;
+  }
+}
+
+@media (max-width: 700px) {
+  .case-study {
+    --cs-radius: 16px;
+  }
+}
+
+.case-study .case-study__video {
+  max-width: min(100%, var(--cs-video-w));
+  margin-inline: auto;
+
+  border-radius: var(--cs-radius);
+}
+
+.case-study .case-study__design-figure {
+  max-width: min(100%, var(--cs-image-w));
+  margin: 0 auto clamp(3.5rem, 7vw, 6rem);
+}
+
+.case-study .case-study__design-figure:last-child {
+  margin-bottom: 0;
+}
+
+.case-study .ghost-frame {
+  max-width: min(100%, var(--cs-frame-w));
+  margin-inline: auto;
+}
+
+.case-study .ghost-frame__media {
+  border-radius: var(--cs-radius);
+}
+
+/* the concept sheet is padded: its image follows the frame's curve */
+.case-study .ghost-frame--concept .image-lightbox__trigger,
+.case-study .ghost-frame--concept .image-lightbox__trigger img {
+  border-radius: max(6px, calc(var(--cs-radius) - 10px));
+}
+
+/* Screenshots: the image button itself is the rounded, framed surface, so
+   the picture clips to the curve and the focus ring follows it */
+.case-study .case-study__design-image .image-lightbox__trigger {
+  overflow: hidden;
+
+  border: 1px solid var(--media-rim);
+  border-radius: var(--cs-radius);
+
+  box-shadow:
+    0 0 0 5px var(--media-surround),
+    var(--media-shadow);
+}
+
+.case-study .case-study__design-image .image-lightbox__trigger::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: inherit;
+
+  box-shadow:
+    inset 0 1px 0 var(--media-highlight),
+    inset 0 0 0 1px color-mix(in srgb, var(--media-highlight) 35%, transparent);
+
+  pointer-events: none;
+}
+
+/* the caption sits close under its image */
+.case-study .case-study__design-figure figcaption {
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* a little more air between a section's text and its media */
+.case-study .case-study__section-heading + .case-study__video {
+  margin-top: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+/* ---------- Case-study media: enters from alternating sides ----------
+   Tagged by useScrollReveal (data-reveal="side", data-reveal-from), and
+   only once the block reaches the trigger line. Text keeps its small rise. */
+
+@keyframes motion-side-in {
+  from {
+    opacity: 0;
+    transform: translate3d(
+        calc(var(--side-from, -1) * var(--side-distance, 40px)),
+        12px,
+        0
+      )
+      scale(0.975);
+  }
+}
+
+[data-reveal-from="left"] {
+  --side-from: -1;
+}
+
+[data-reveal-from="right"] {
+  --side-from: 1;
+}
+
+@media (max-width: 1000px) {
+  [data-reveal="side"] {
+    --side-distance: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  [data-reveal="side"] {
+    --side-distance: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-reduced-motion="true"]) [data-reveal="side"][data-revealed] {
+    animation: motion-side-in 900ms cubic-bezier(0.22, 1, 0.36, 1)
+      var(--reveal-delay, 0ms) backwards;
+  }
+}
+
+/* =========================================================
+   WORK CAROUSEL (WorkCarousel.tsx) — A STACKED DECK
+   All slides share one grid cell. Each is placed by its circular distance
+   from the active project (--abs) and its side (--side: −1 previous, 1
+   next, 0 the card directly behind): the active cover in front, flat and
+   full size; the others behind it, each step further back smaller, lower,
+   fainter, darker and shifted toward its side, so the deck fans out on
+   both sides. The deck has no ends; it wraps round. Square corners, editorial rather than the
+   rounded Home cards. Moved by Previous / Next, the arrow keys or a swipe.
+   ========================================================= */
+
+.work-carousel {
+  --card-w: clamp(320px, 56vw, 760px);
+
+  /* per step back: sideways, down, scale, opacity, shade */
+  --deck-x1: 120px;
+  --deck-x2: 70px;
+  --deck-x3: 40px;
+  --deck-y1: 20px;
+  --deck-y2: 14px;
+  --deck-s1: 0.08;
+  --deck-s2: 0.07;
+  --deck-o1: 0.35;
+  --deck-o2: 0.3;
+
+  position: relative;
+
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+
+  overflow-x: clip;
+}
+
+.work-carousel__viewport {
+  position: relative;
+}
+
+.work-carousel__track {
+  display: grid;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.work-carousel__slide {
+  /* --abs (circular distance) and --side (−1 / 0 / 1) are set inline */
+  --near: min(var(--abs), 1);
+  --mid: clamp(0, var(--abs) - 1, 1);
+  --far: clamp(0, var(--abs) - 2, 1);
+
+  grid-area: 1 / 1;
+  justify-self: center;
+
+  position: relative;
+  z-index: calc(10 - var(--abs));
+
+  width: var(--card-w);
+  min-width: 0;
+
+  transform-origin: 50% 0;
+  transform: translate(
+      calc(
+        var(--side) *
+          (
+            var(--deck-x1) * var(--near) + var(--deck-x2) * var(--mid) +
+              var(--deck-x3) * var(--far)
+          )
+      ),
+      calc(var(--deck-y1) * var(--near) + var(--deck-y2) * var(--mid))
+    )
+    scale(
+      calc(
+        1 - var(--deck-s1) * var(--near) - var(--deck-s2) * var(--mid) - 0.05 *
+          var(--far)
+      )
+    );
+
+  /* 1 in front, 0.65 next, 0.35 after that, then gone */
+  opacity: calc(
+    1 - var(--deck-o1) * var(--near) - var(--deck-o2) * var(--mid) - 0.35 *
+      var(--far)
+  );
+
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-carousel__media {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+/* cards further back are shaded a little darker */
+.work-carousel__media::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  background: #000000;
+
+  opacity: calc(0.12 * var(--abs));
+
+  pointer-events: none;
+
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-carousel__image-link {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.work-carousel__media img,
+.work-carousel__media video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* Number / count, title and year: compact, under the front cover only */
+.work-carousel__caption {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--space-4);
+
+  margin-top: var(--space-5);
+
+  transition: opacity 300ms var(--ease-standard);
+}
+
+.work-carousel__slide:not(.is-active) .work-carousel__caption {
+  opacity: 0;
+}
+
+/* cards in the deck read as covers only: no captions, no video controls */
+.work-carousel__slide:not(.is-active) .video-preview__controls {
+  visibility: hidden;
+}
+
+.work-carousel__number,
+.work-carousel__year {
+  color: var(--color-label);
+
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.work-carousel__title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+
+  min-width: 0;
+
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.work-carousel__title h2 {
+  margin: 0;
+
+  font-size: clamp(1.375rem, 1.05rem + 0.8vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.work-carousel__title > span {
+  color: var(--color-text-muted);
+
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.work-carousel__title:hover > span {
+  color: var(--color-accent);
+
+  transform: translate(0.15rem, -0.15rem);
+}
+
+/* Large Previous / Next on either side, over the edges of the deck,
+   level with the front cover's middle */
+.work-carousel__nav {
+  position: absolute;
+  top: calc(var(--card-w) * 9 / 32 - 26px);
+  z-index: 20;
+
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+  padding: 0;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.work-carousel__nav svg {
+  width: 22px;
+  height: 22px;
+}
+
+.work-carousel__nav--previous {
+  left: calc(50% - var(--card-w) / 2 - 78px);
+}
+
+.work-carousel__nav--next {
+  right: calc(50% - var(--card-w) / 2 - 78px);
+}
+
+.work-carousel__nav:disabled {
+  opacity: 0.3;
+
+  cursor: default;
+}
+
+.work-carousel__status {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tablets: a shallower deck — the front cover and one card each side */
+@media (max-width: 1000px) {
+  .work-carousel {
+    --card-w: min(64vw, 620px);
+    --deck-x1: 84px;
+    --deck-y1: 16px;
+    --deck-o2: 0.65;
+  }
+}
+
+/* Phones: one cover across the content width, with the next one only
+   hinted behind it (lifted above its top edge); arrows inside the media */
+@media (max-width: 700px) {
+  .work-carousel {
+    --card-w: 100%;
+
+    padding-top: 14px;
+  }
+
+  .work-carousel__viewport {
+    container-type: inline-size;
+  }
+
+  .work-carousel__slide {
+    transform: translateY(calc(-12px * var(--near)))
+      scale(calc(1 - 0.06 * var(--near)));
+
+    opacity: calc(1 - 0.6 * var(--near));
+  }
+
+  /* only the next card shows as a hint; the rest wait unseen */
+  .work-carousel__slide:not(.is-active, [data-offset="1"]) {
+    opacity: 0;
+  }
+
+  .work-carousel__nav {
+    top: calc(100cqw * 9 / 32 - 22px);
+
+    width: 44px;
+    height: 44px;
+  }
+
+  .work-carousel__nav svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .work-carousel__nav--previous {
+    left: 10px;
+  }
+
+  .work-carousel__nav--next {
+    right: 10px;
+  }
+}
+
+/* =========================================================
+   AURA BEAUTY — MEDIA TINT
+   The project's shots are creamy / warm; on the light rosy page a faint
+   blush wash (about 10%) and a touch less yellow help them sit in. Only
+   on the Aura case study, only in the light theme (tokens), and only on
+   the in-page media: the expanded video and the lightbox show the
+   original colours.
+   ========================================================= */
+
+.case-study--aura .case-study__design-image .image-lightbox__trigger img,
+.case-study--aura
+  .case-study__video
+  .video-preview:not(.video-preview--expanded)
+  video {
+  filter: var(--aura-filter);
+}
+
+/* under the frame highlight (::after), above the picture */
+.case-study--aura .case-study__video::before,
+.case-study--aura .case-study__design-image .image-lightbox__trigger::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  border-radius: inherit;
+
+  background: var(--aura-tint);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   CASE STUDY — THE AWAKENING (TheAwakening.tsx)
+   Built from the shared case-study pieces (and the Lost Little Ghost
+   layouts); only what is new for this project lives here.
+   ========================================================= */
+
+/* labels set as h2 / h3 keep the small label size */
+.case-study--awakening :is(h2, h3).case-study__label {
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-body);
+}
+
+/* Trailer: the shared rounded media frame clips the YouTube poster/player */
+.case-study--awakening .case-study__video .youtube-preview {
+  border: 0;
+  border-radius: 0;
+}
+
+.case-study--awakening .youtube-preview img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.awakening-credit {
+  max-width: min(100%, var(--cs-video-w));
+  margin: var(--space-4) auto 0;
+
+  color: var(--color-text-muted);
+
+  font-size: max(0.875rem, 14px);
+  line-height: 1.5;
+}
+
+/* Core loop: two lines of stages, one per side */
+.awakening-loop__row + .awakening-loop__row {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.awakening-loop__name {
+  margin: 0;
+
+  color: var(--color-label);
+
+  font-size: var(--font-size-label);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1101px) {
+  .awakening-loop__steps {
+    grid-template-columns: repeat(var(--steps, 6), minmax(0, 1fr));
+  }
+}
+
+/* Testing: Problem → Observation → Change → Result */
+.awakening-test__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.awakening-test__step {
+  position: relative;
+
+  padding-top: var(--space-4);
+
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.awakening-test__step:last-child {
+  border-top-color: var(--color-accent);
+}
+
+.awakening-test__step p {
+  margin: var(--space-3) 0 0;
+
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .awakening-test__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-6);
+  }
+}
+
+@media (max-width: 560px) {
+  .awakening-test__steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scope: what was planned next to what was built */
+.awakening-scope {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+
+  max-width: 680px;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.awakening-scope ul {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.awakening-scope li {
+  padding-block: 0.7rem;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.awakening-scope__column--built li {
+  color: var(--color-text);
+}
+
+@media (max-width: 560px) {
+  .awakening-scope {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Playable prototype */
+.case-study--awakening .awakening-play__title {
+  margin: 0;
+}
+
+/* Reflection: the take-aways as a short list */
+.awakening-future__label {
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
+}
+
+.awakening-future {
+  max-width: 680px;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.awakening-future li {
+  position: relative;
+
+  padding: 0.55rem 0 0.55rem 1.5rem;
+
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.awakening-future li::before {
+  content: "";
+
+  position: absolute;
+  top: 1.15rem;
+  left: 0;
+
+  width: 0.75rem;
+  height: 1px;
+
+  background: var(--color-accent);
+}
+
+/* Continuing in Unity: a separate, quieter panel with a status badge */
+.awakening-continue {
+  max-width: 900px;
+  margin: clamp(2rem, 4vw, 3rem) auto clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+
+  background: color-mix(in srgb, var(--color-surface) 55%, transparent);
+
+  border: 1px solid var(--media-rim);
+  border-radius: var(--cs-radius);
+}
+
+.awakening-continue h2 {
+  margin: var(--space-4) 0 var(--space-3);
+}
+
+.awakening-continue p:not(.awakening-continue__badge) {
+  max-width: 680px;
+  margin: 0;
+
+  line-height: 1.6;
+}
+
+.awakening-continue__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+
+  border-radius: var(--radius-pill);
+
+  font-size: max(0.8125rem, 13px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.awakening-continue__badge::before {
+  content: "";
+
+  width: 0.45rem;
+  height: 0.45rem;
+
+  background: var(--color-accent);
+
+  border-radius: 50%;
+}
+
+:root[data-high-contrast="true"] .awakening-continue__badge {
+  border: 1px solid #ffffff;
+}
+
+/* =========================================================
+   CASE STUDY — VISION AI (VisionAi.tsx)
+   Shared case-study pieces; only the few new bits live here.
+   ========================================================= */
+
+.case-study--vision :is(h2, h3).case-study__label {
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-body);
+}
+
+.case-study--vision .vision-section-title {
+  margin: 0;
+}
+
+.vision-result {
+  color: var(--color-text);
+}
+
+@media (min-width: 1101px) {
+  .vision-concept__steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.vision-role {
+  max-width: 680px;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+
+  list-style: none;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.vision-role li {
+  padding-block: 0.75rem;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Work carousel: a trailer preview fills the card's own square frame */
+.work-carousel__media .youtube-preview {
+  height: 100%;
+
+  border: 0;
+  border-radius: 0;
 }

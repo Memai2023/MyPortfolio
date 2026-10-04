@@ -41,12 +41,19 @@ export const translations = {
       viewWork: "View selected work",
       aboutMe: "About me",
       scrollLabel: "Selected work",
+      previousProject: "Previous project",
+      nextProject: "Next project",
     },
 
     work: {
       title: "Work",
       intro:
         "Selected projects across UX, experience design and interactive development.",
+      previousProject: "Previous project",
+      nextProject: "Next project",
+      of: "of",
+      playTrailer: "Play {title} trailer",
+      trailerUnavailable: "Trailer unavailable",
     },
 
     about: {
@@ -157,12 +164,19 @@ export const translations = {
       viewWork: "Se utvalda projekt",
       aboutMe: "Om mig",
       scrollLabel: "Utvalda projekt",
+      previousProject: "Föregående projekt",
+      nextProject: "Nästa projekt",
     },
 
     work: {
       title: "Projekt",
       intro:
         "Utvalda projekt inom UX, experience design och interaktiv utveckling.",
+      previousProject: "Föregående projekt",
+      nextProject: "Nästa projekt",
+      of: "av",
+      playTrailer: "Spela trailern för {title}",
+      trailerUnavailable: "Trailern är inte tillgänglig",
     },
 
     about: {

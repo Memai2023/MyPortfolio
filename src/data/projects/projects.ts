@@ -19,7 +19,7 @@ export const projects: Project[] = [
   {
     id: "sellpy-redesign",
     title: "Sellpy Redesign",
-    year: "2025",
+    year: "2026",
     image: null,
     featured: true,
   },
@@ -33,6 +33,13 @@ export const projects: Project[] = [
   {
     id: "lost-little-ghost",
     title: "Lost Little Ghost",
+    year: "2026",
+    image: null,
+    featured: true,
+  },
+  {
+    id: "vision-ai",
+    title: "Vision AI",
     year: "2026",
     image: null,
     featured: true,

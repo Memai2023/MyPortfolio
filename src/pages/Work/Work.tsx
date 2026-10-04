@@ -1,4 +1,4 @@
-import ProjectList from "../../components/projects/ProjectList";
+import WorkCarousel from "../../components/projects/WorkCarousel";
 
 import { projects } from "../../data/projects/projects";
 import { useLanguage } from "../../features/language/useLanguage";
@@ -15,9 +15,7 @@ function Work() {
         <p className="work-page__text">{t.work.intro}</p>
       </header>
 
-      <section className="featured-work" aria-label={t.work.title}>
-        <ProjectList projects={projects} />
-      </section>
+      <WorkCarousel projects={projects} />
     </div>
   );
 }

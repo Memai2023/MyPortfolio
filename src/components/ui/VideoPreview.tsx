@@ -5,9 +5,25 @@ type VideoPreviewProps = {
   src: string;
   title: string;
   allowZoom?: boolean;
+  // "auto": plays on load (default). "on-demand": paused until `active`
+  // (hover/focus, decided by the parent) or the play button.
+  playback?: "auto" | "on-demand";
+  active?: boolean;
+  // On-demand only: forces the video paused (e.g. its carousel slide is no
+  // longer shown); also cancels a "play" the user chose
+  forcePause?: boolean;
 };
 
-function VideoPreview({ src, title, allowZoom = false }: VideoPreviewProps) {
+type PlaybackIntent = "none" | "play" | "pause";
+
+function VideoPreview({
+  src,
+  title,
+  allowZoom = false,
+  playback = "auto",
+  active = false,
+  forcePause = false,
+}: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const { pauseVideo } = useAccessibility();
@@ -16,7 +32,35 @@ function VideoPreview({ src, title, allowZoom = false }: VideoPreviewProps) {
   const [isManuallyPaused, setIsManuallyPaused] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const isPaused = pauseVideo || isManuallyPaused;
+  const onDemand = playback === "on-demand";
+
+  // On-demand only: an explicit play/pause from the controls
+  const [intent, setIntent] = useState<PlaybackIntent>("none");
+  const [wasActive, setWasActive] = useState(active);
+  const [wasForced, setWasForced] = useState(forcePause);
+
+  // A pause chosen while hovering only lasts until the pointer/focus leaves
+  if (active !== wasActive) {
+    setWasActive(active);
+
+    if (!active && intent === "pause") {
+      setIntent("none");
+    }
+  }
+
+  if (forcePause !== wasForced) {
+    setWasForced(forcePause);
+
+    if (forcePause && intent !== "none") {
+      setIntent("none");
+    }
+  }
+
+  const isPaused = onDemand
+    ? pauseVideo ||
+      forcePause ||
+      !(intent === "play" || (intent === "none" && (active || isExpanded)))
+    : pauseVideo || isManuallyPaused;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -63,6 +107,12 @@ function VideoPreview({ src, title, allowZoom = false }: VideoPreviewProps) {
       return;
     }
 
+    if (onDemand) {
+      setIntent(isPaused ? "play" : "pause");
+
+      return;
+    }
+
     setIsManuallyPaused((current) => !current);
   };
 
@@ -90,8 +140,9 @@ function VideoPreview({ src, title, allowZoom = false }: VideoPreviewProps) {
       <video
         ref={videoRef}
         data-ambient-video
-        src={src}
-        autoPlay
+        // "#t=0.1" makes paused on-demand previews show a frame, not black
+        src={onDemand ? `${src}#t=0.1` : src}
+        autoPlay={!onDemand}
         muted
         loop
         playsInline

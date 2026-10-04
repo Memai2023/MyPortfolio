@@ -13,6 +13,8 @@ import VideoPreview from "../../components/ui/VideoPreview";
 import ImageLightbox from "../../components/ui/ImageLightbox";
 
 import LostLittleGhost from "./LostLittleGhost";
+import TheAwakening from "./TheAwakening";
+import VisionAi from "./VisionAi";
 
 import { useLanguage } from "../../features/language/useLanguage";
 
@@ -23,6 +25,14 @@ function CaseStudy() {
   const isSellpy = slug === "sellpy-redesign";
   const isAuraBeauty = slug === "aura-beauty";
   const isLostLittleGhost = slug === "lost-little-ghost";
+
+  if (slug === "the-awakening") {
+    return <TheAwakening />;
+  }
+
+  if (slug === "vision-ai") {
+    return <VisionAi />;
+  }
 
   if (isLostLittleGhost) {
     return <LostLittleGhost />;
@@ -436,7 +446,7 @@ function CaseStudy() {
         };
 
   return (
-    <article className="case-study">
+    <article className="case-study case-study--aura">
       <div className="case-study__container">
         <Link className="case-study__back" to="/work">
           ← {language === "sv" ? "Tillbaka till projekt" : "Back to work"}

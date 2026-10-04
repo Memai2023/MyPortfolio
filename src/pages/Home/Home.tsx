@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 
-import ProjectList from "../../components/projects/ProjectList";
+import HomeAbout from "../../components/home/HomeAbout";
+import HomeContact from "../../components/home/HomeContact";
+import HomeWaves from "../../components/home/HomeWaves";
+import HomeWorkScene from "../../components/home/HomeWorkScene";
 
-import { projects } from "../../data/projects/projects";
 import { useLanguage } from "../../features/language/useLanguage";
 import { translations } from "../../features/language/translations";
 
@@ -10,10 +12,11 @@ function Home() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const featuredProjects = projects.filter((project) => project.featured);
-
   return (
     <div className="home-page">
+      {/* Line-wave background and scroll-tinted colour behind the page */}
+      <HomeWaves />
+
       {/* Hero */}
       <section className="hero">
         <div className="hero__eyebrow">
@@ -46,14 +49,12 @@ function Home() {
         </div>
       </section>
 
-      {/* Featured projects */}
-      <section className="featured-work">
-        <div className="featured-work__heading">
-          <p>{t.home.scrollLabel}</p>
-        </div>
+      {/* Selected work: a scroll-driven scene */}
+      <HomeWorkScene />
 
-        <ProjectList projects={featuredProjects} />
-      </section>
+      {/* About, then Contact as the closing scene */}
+      <HomeAbout />
+      <HomeContact />
     </div>
   );
 }
